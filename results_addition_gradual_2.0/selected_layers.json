@@ -1,0 +1,13 @@
+{
+  "T_layer": 18,
+  "T_validation_iia": 0.9696969696969697,
+  "T_test_iia": 0.9562289562289562,
+  "C_layer": 16,
+  "C_validation_score": 0.9427609427609428,
+  "C_test_direct_iia": 0.9933333333333333,
+  "C_test_T_mediator_iia": 0.9766666666666667,
+  "C_test_T_readout_acc": 0.9399999976158142,
+  "C_lambda_med": 2.0,
+  "C_lambda_readout": 2.0,
+  "seed": 0
+}

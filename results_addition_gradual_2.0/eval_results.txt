@@ -1,0 +1,23 @@
+=== CHECKPOINT ===
+T layer: 18
+C layer: 16
+T validation_iia: 0.9697
+C validation_score: 0.9428
+
+=== CLEAN T READOUT ===
+T base/source: 0.9360 / 0.9259
+
+=== T -> Y ===
+Y_after_T: 0.9562 | Y_after_T_token_exact: 0.9562 | Y_after_T_teacher_forced: 0.9562 | Y_after_T_first_token: 0.9832
+
+=== C -> T -> Y [C_only] ===
+Y_after_C: 0.9933 | Y_after_C_token_exact: 0.9933 | Y_after_C_teacher_forced: 0.9933 | Y_after_C_first_token: 0.9933 | T_after_C: 0.9400 | T_and_Y_after_C: 0.9367 | Y_via_T_replay: 0.9767 | Y_via_T_replay_token_exact: 0.9767 | Y_via_T_replay_teacher_forced: 0.9767 | Y_via_T_replay_first_token: 0.9767
+
+=== C -> T -> Y [C_T] ===
+Y_after_C: 1.0000 | Y_after_C_token_exact: 1.0000 | Y_after_C_teacher_forced: 1.0000 | Y_after_C_first_token: 1.0000 | T_after_C: 0.8100 | T_and_Y_after_C: 0.8100 | Y_via_T_replay: 0.9667 | Y_via_T_replay_token_exact: 0.9667 | Y_via_T_replay_teacher_forced: 0.9667 | Y_via_T_replay_first_token: 0.9767
+
+=== OTHER RECIPIENTS [C_only] ===
+induced_T_recipient_Y: 0.8667 | induced_T_recipient_token_exact: 0.8667 | induced_T_recipient_teacher_forced: 0.8667 | induced_T_recipient_first_token: 0.9333 | clean_T_recipient_Y: 0.8033 | clean_T_recipient_token_exact: 0.8033 | clean_T_recipient_teacher_forced: 0.8033 | clean_T_recipient_first_token: 0.8600 | num_recipients: 300 | num_unique_recipients: 189
+
+=== OTHER RECIPIENTS [C_T] ===
+induced_T_recipient_Y: 0.9033 | induced_T_recipient_token_exact: 0.9033 | induced_T_recipient_teacher_forced: 0.9033 | induced_T_recipient_first_token: 0.9633 | clean_T_recipient_Y: 0.8000 | clean_T_recipient_token_exact: 0.8000 | clean_T_recipient_teacher_forced: 0.8000 | clean_T_recipient_first_token: 0.8600 | num_recipients: 300 | num_unique_recipients: 191

@@ -1,0 +1,10 @@
+{
+  "cache_version": 2,
+  "model": "google/gemma-2-2b",
+  "max_new_tokens": 4,
+  "raw_files": {
+    "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+    "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486",
+    "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8"
+  }
+}
