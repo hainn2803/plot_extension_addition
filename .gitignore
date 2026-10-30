@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+
+hf_cache/
+
+addition_controlled_data/
+addition_filtered_pairs/
+
+*.pt
+*.pth
+*.bin
+*.safetensors
+
+.DS_Store
+
+addition_constants.py
