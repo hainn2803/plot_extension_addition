@@ -1,0 +1,35 @@
+=== EVALUATION SEMANTICS ===
+Free autoregressive generation until EOS or generation_cap=8
+Ground-truth answer length is NOT used for stopping
+Ground-truth answer tokens are NEVER fed during Y evaluation
+
+=== CLEAN READOUT ===
+C base/source: 1.0000 / 0.9967
+T base/source: 0.9360 / 0.9259
+
+=== NODE CORRECTNESS — T intervention [T_only] ===
+Joint_T_Y_after_T: 0.8855 | T_after_T: 0.9259 | Y_after_T: 0.9562
+
+=== NODE CORRECTNESS — C intervention [C_only] ===
+Joint_C_T_Y_after_C: 0.4167 | C_after_C: 0.9967 | T_after_C: 0.4200 | Y_after_C: 0.9967
+
+=== MEDIATOR — C intervention [C_only] ===
+Y_via_T_replay: 0.6800
+
+=== RESTORATION — C intervention [C_only] ===
+Y_restored_via_T: 0.7167
+
+=== NODE CORRECTNESS — C intervention [C_T] ===
+Joint_C_T_Y_after_C: 0.5733 | C_after_C: 1.0000 | T_after_C: 0.5733 | Y_after_C: 1.0000
+
+=== MEDIATOR — C intervention [C_T] ===
+Y_via_T_replay: 0.7033
+
+=== RESTORATION — C intervention [C_T] ===
+Y_restored_via_T: 0.7467
+
+=== OTHER RECIPIENTS [C_only] ===
+induced_T_recipient_Y: 0.7900 | clean_T_recipient_Y: 0.8033 | num_recipients: 300 | num_unique_recipients: 189
+
+=== OTHER RECIPIENTS [C_T] ===
+induced_T_recipient_Y: 0.8533 | clean_T_recipient_Y: 0.8000 | num_recipients: 300 | num_unique_recipients: 191

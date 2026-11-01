@@ -1,0 +1,54 @@
+{
+  "evaluation_semantics": {
+    "generation": "free_autoregressive_until_eos_or_cap",
+    "generation_cap": 8,
+    "ground_truth_length_used_for_stopping": false,
+    "teacher_forcing_used_for_Y_evaluation": false,
+    "score": "first_integer_in_full_completion_equals_target_integer"
+  },
+  "layers": {
+    "C": 16,
+    "T": 18
+  },
+  "clean_readout": {
+    "C_base": 1.0,
+    "C_source": 0.996666669845581,
+    "T_base": 0.936026930809021,
+    "T_source": 0.9259259104728699
+  },
+  "T_only": {
+    "Joint_T_Y_after_T": 0.8855218887329102,
+    "T_after_T": 0.9259259104728699,
+    "Y_after_T": 0.9562289714813232
+  },
+  "C_only": {
+    "Joint_C_T_Y_after_C": 0.9333333373069763,
+    "C_after_C": 0.996666669845581,
+    "T_after_C": 0.9399999976158142,
+    "Y_after_C": 0.9933333396911621,
+    "Y_via_T_replay": 0.9766666889190674,
+    "Y_restored_via_T": 0.8133333325386047
+  },
+  "C_T": {
+    "Joint_C_T_Y_after_C": 0.8100000023841858,
+    "C_after_C": 1.0,
+    "T_after_C": 0.8100000023841858,
+    "Y_after_C": 1.0,
+    "Y_via_T_replay": 0.9666666388511658,
+    "Y_restored_via_T": 0.8233333230018616
+  },
+  "recipients": {
+    "C_only": {
+      "induced_T_recipient_Y": 0.8666666746139526,
+      "clean_T_recipient_Y": 0.8033333420753479,
+      "num_recipients": 300,
+      "num_unique_recipients": 189
+    },
+    "C_T": {
+      "induced_T_recipient_Y": 0.903333306312561,
+      "clean_T_recipient_Y": 0.800000011920929,
+      "num_recipients": 300,
+      "num_unique_recipients": 191
+    }
+  }
+}
