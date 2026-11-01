@@ -1,0 +1,31 @@
+{
+  "method": "gradual",
+  "C_layer": 16,
+  "T_layer": 19,
+  "lambda_med": 2.0,
+  "lambda_readout": 2.0,
+  "generation_cap": 8,
+  "metrics": {
+    "T_only": {
+      "Joint_T_Y_after_T": 0.9259259104728699,
+      "T_after_T": 0.9663299918174744,
+      "Y_after_T": 0.9595959782600403
+    },
+    "C_only": {
+      "Joint_C_T_Y_after_C": 0.9800000190734863,
+      "C_after_C": 0.996666669845581,
+      "T_after_C": 0.9833333492279053,
+      "Y_after_C": 1.0,
+      "Y_via_T_replay": 0.9700000286102295,
+      "Y_restored_via_T": 0.9100000262260437
+    },
+    "C_T": {
+      "Joint_C_T_Y_after_C": 0.9266666769981384,
+      "C_after_C": 1.0,
+      "T_after_C": 0.9266666769981384,
+      "Y_after_C": 1.0,
+      "Y_via_T_replay": 0.9599999785423279,
+      "Y_restored_via_T": 0.9233333468437195
+    }
+  }
+}

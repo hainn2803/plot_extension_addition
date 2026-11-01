@@ -1,0 +1,31 @@
+{
+  "method": "gradual",
+  "C_layer": 15,
+  "T_layer": 20,
+  "lambda_med": 2.0,
+  "lambda_readout": 2.0,
+  "generation_cap": 8,
+  "metrics": {
+    "T_only": {
+      "Joint_T_Y_after_T": 0.9427609443664551,
+      "T_after_T": 0.9831649661064148,
+      "Y_after_T": 0.9595959782600403
+    },
+    "C_only": {
+      "Joint_C_T_Y_after_C": 0.46666666865348816,
+      "C_after_C": 0.9800000190734863,
+      "T_after_C": 0.6233333349227905,
+      "Y_after_C": 0.5400000214576721,
+      "Y_via_T_replay": 0.4866666793823242,
+      "Y_restored_via_T": 0.9833333492279053
+    },
+    "C_T": {
+      "Joint_C_T_Y_after_C": 0.17000000178813934,
+      "C_after_C": 0.9900000095367432,
+      "T_after_C": 0.3466666638851166,
+      "Y_after_C": 0.20999999344348907,
+      "Y_via_T_replay": 0.1133333370089531,
+      "Y_restored_via_T": 0.9900000095367432
+    }
+  }
+}
