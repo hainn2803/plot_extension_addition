@@ -50,10 +50,10 @@ class McqaLayoutTests(unittest.TestCase):
         self.pair = {"C_layer": self.c, "T_layer": self.t}
         self.sdas_selection = self.standard / "selected_layers_standard.json"
         write_json(self.standard / "run_manifest.json", {
-            "method": "standard", "data": self.data,
+            "method": "standard", "data": self.data, "generation_cap": 8,
         })
         write_json(self.gradual / "run_manifest.json", {
-            "method": "gradual", "data": self.data,
+            "method": "gradual", "data": self.data, "generation_cap": 8,
             "standard_root": str(self.standard.resolve()),
         })
 
