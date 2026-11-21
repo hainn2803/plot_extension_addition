@@ -69,13 +69,12 @@ def make_schedule(donor_pairs, pool, kind, condition, seed):
 
     picked = []
     for donor in donor_pairs:
-        patched_value = int(
-            donor["T_after_C_intervene"]
-            if kind == "T" and donor["pair_type"] != "T_only"
-            else donor["T_after_T_intervene"]
-            if kind == "T"
-            else donor["source_C"]
-        )
+        if kind == "T" and donor["pair_type"] == "T_only":
+            patched_value = int(donor["T_after_T_intervene"])
+        elif kind == "T":
+            patched_value = int(donor["T_after_C_intervene"])
+        else:
+            patched_value = int(donor["source_C"])
         if kind == "T":
             target_pool = (
                 candidates_by_value[patched_value] if condition == "same"
