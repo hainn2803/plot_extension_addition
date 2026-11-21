@@ -16,6 +16,7 @@ from addition_das import set_seed
 from addition_neural_network import load_gemma_model
 from addition_train_standard_grid import build_factual_c_bank, fit_c_readout
 from addition_train_gradual_grid import train_c_gradual
+from addition_gradual_snapshot import freeze_t_snapshots, validate_gradual_pair_snapshot
 from addition_pipeline_utils import (
     assert_run_manifest,
     check_artifacts,
@@ -31,7 +32,7 @@ from addition_pipeline_utils import (
 )
 
 
-def rebuild_summary(root, standard_root):
+def rebuild_summary(root):
     rows = []
     for directory in sorted((root / "pairs").glob("C_*_T_*")):
         match = re.fullmatch(r"C_(\d+)_T_(\d+)", directory.name)
@@ -39,7 +40,7 @@ def rebuild_summary(root, standard_root):
             continue
         c, t = map(int, match.groups())
         ckpt_path, readout_path = gradual_paths(root, c, t)
-        t_ckpt_path, t_readout_path = handle_paths(standard_root, "T", t)
+        t_ckpt_path, t_readout_path = handle_paths(root, "T", t)
         if not all(p.exists() for p in (ckpt_path, readout_path, t_ckpt_path, t_readout_path)):
             continue
         cp = load_checkpoint(ckpt_path, "C", c, "gradual", t)
@@ -159,6 +160,9 @@ def main():
     })
 
     pairs = requested_pairs(args, root, model)
+    # Make this GDAS run independently evaluable: local frozen SDAS T copies
+    # and an immutable record of exactly which (C,T) pairs were trained.
+    freeze_t_snapshots(root, standard_root, pairs)
     prefix_ids = banks["prefix_ids"]
     c_factual_train = build_factual_c_bank(tokenizer, data_rows["train"]["C_only"], prefix_ids)
     c_factual_val = build_factual_c_bank(tokenizer, data_rows["validation"]["C_only"], prefix_ids)
@@ -166,19 +170,19 @@ def main():
     t_cache = {}
     for index, (c_layer, t_layer) in enumerate(pairs, 1):
         if t_layer not in t_cache:
-            t_path, t_ro_path = handle_paths(standard_root, "T", t_layer)
+            t_path, t_ro_path = handle_paths(root, "T", t_layer)
             check_artifacts([t_path, t_ro_path])
             t_cache[t_layer] = (
                 load_checkpoint(t_path, "T", t_layer, "standard"),
                 torch.load(t_ro_path, map_location="cpu", weights_only=False),
             )
         t_cp, t_readout = t_cache[t_layer]
-        t_path, t_ro_path = handle_paths(standard_root, "T", t_layer)
+        source_t_path, source_t_ro_path = handle_paths(standard_root, "T", t_layer)
         c_path, c_ro_path = gradual_paths(root, c_layer, t_layer)
         c_path.parent.mkdir(parents=True, exist_ok=True)
         meta_path = c_path.parent / "train_signature.json"
         identity = {
-            "upstream_artifacts": check_artifacts([t_path, t_ro_path]),
+            "upstream_artifacts": check_artifacts([source_t_path, source_t_ro_path]),
             "run_manifest": read_json(root / "run_manifest.json"),
             "C_layer": c_layer, "T_layer": t_layer,
         }
@@ -190,6 +194,7 @@ def main():
         else:
             write_json(meta_path, identity)
 
+        validate_gradual_pair_snapshot(root, c_layer, t_layer)
         print(f"[gradual {index}/{len(pairs)}] C{c_layer} -> T{t_layer}", flush=True)
         if c_path.exists():
             c_cp = load_checkpoint(c_path, "C", c_layer, "gradual", t_layer)
@@ -206,9 +211,9 @@ def main():
                 args.eval_batch_size, args.seed,
             )
             torch.save(c_readout, c_ro_path)
-        rebuild_summary(root, standard_root)
+        rebuild_summary(root)
 
-    summary = rebuild_summary(root, standard_root)
+    summary = rebuild_summary(root)
     print(f"[saved] {root / 'summary.csv'} ({len(summary)} completed GDAS pairs)")
 
 
