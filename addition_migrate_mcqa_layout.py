@@ -10,8 +10,8 @@ GDAS:
 
 Both:
   evaluation_<method>/C_16_T_18/metrics.json
-      -> eval_configs/T_L18__C_L16/{metrics.json, eval_faithfulness.*}
-  eval_configs/{config_summary.csv,all_config_metrics.csv}
+      -> eval_configs_<hash>/T_L18__C_L16/{metrics.json, eval_faithfulness.*}
+  eval_configs_<hash>/{eval_settings.json,config_summary.csv,all_config_metrics.csv}
 
 Copy+SHA256-verify each artifact before retiring its old location.
 Does not load the model or invoke CUDA, and never retrains/evaluates.
@@ -22,6 +22,8 @@ import re
 from pathlib import Path
 
 from addition_eval_reports import import_legacy, rebuild_summary
+from addition_eval_profile import profile_directory, profile_settings
+from addition_recipient_schedule import RECIPIENT_VERSION
 from addition_gradual_snapshot import (
     artifact_hashes_by_name,
     copy_immutable,
@@ -138,46 +140,58 @@ def migrate_conditional_c(root):
     print(f"[gradual] migrated {moved} conditional C checkpoint/metadata files")
 
 
-def retire_legacy_evaluations(root, method, pairs):
-    """Move old metrics only after new metrics and reports exist."""
-    old_root = Path(root) / f"evaluation_{method}"
+def retire_legacy_evaluations(root, method, pairs, eval_dir):
+    """Retire only verified legacy copies, retaining unknown files safely."""
     from addition_eval_reports import config_dir, legacy_dir
 
-    for c, t in pairs:
-        old = legacy_dir(root, method, c, t)
-        new = config_dir(root, c, t)
-        original = old / "metrics.json"
-        translated = new / "metrics.json"
-        if original.exists() and translated.exists():
-            # Verify numeric content identity before dropping obsolete copy.
-            if read_json(original) != read_json(translated):
-                raise RuntimeError(
-                    f"Canonical/legacy evaluation data mismatch: {original}"
-                )
-            if not (new / "eval_faithfulness.csv").exists():
-                raise RuntimeError(f"Missing MCQA CSV report at {new}")
-            if not (new / "eval_faithfulness.txt").exists():
-                raise RuntimeError(f"Missing MCQA text report at {new}")
-            original.unlink()
-        remove_if_empty(old)
+    for old_root in (Path(root) / f"evaluation_{method}",
+                     Path(root) / "eval_configs"):
+        for c, t in pairs:
+            if old_root.name == "eval_configs":
+                old = config_dir(old_root, c, t)
+            else:
+                old = legacy_dir(root, method, c, t)
+            new = config_dir(eval_dir, c, t)
+            original = old / "metrics.json"
+            translated = new / "metrics.json"
+            if original.exists() and translated.exists():
+                if read_json(original) != read_json(translated):
+                    raise RuntimeError(
+                        f"Canonical/legacy evaluation data mismatch: {original}"
+                    )
+                for name in ("eval_faithfulness.csv", "eval_faithfulness.txt"):
+                    if not (new / name).exists():
+                        raise RuntimeError(f"Missing MCQA report at {new / name}")
+                original.unlink()
+                for name in ("eval_faithfulness.csv", "eval_faithfulness.txt"):
+                    artifact = old / name
+                    if artifact.is_file():
+                        artifact.unlink()
+            remove_if_empty(old)
+        if (eval_dir / "config_summary.csv").is_file():
+            for name in ("summary.csv", "config_summary.csv", "all_config_metrics.csv"):
+                old_summary = old_root / name
+                if old_summary.is_file():
+                    old_summary.unlink()
+        remove_if_empty(old_root)
 
-    # Old summary is regenerated from the preserved per-config JSON,
-    # with MCQA filenames, but do not delete other unknown legacy files.
-    old_summary = old_root / "summary.csv"
-    new_summary = Path(root) / "eval_configs" / "config_summary.csv"
-    if old_summary.is_file() and new_summary.is_file():
-        old_summary.unlink()
-    remove_if_empty(old_root)
 
-
-def restore_eval(root, method, pairs):
+def restore_eval(root, method, pairs, eval_seed=0, eval_batch_size=32,
+                 max_new_tokens=4):
     root = Path(root)
     manifest = read_json(root / "run_manifest.json")
     data_sig = manifest["data"]
-    import_legacy(root, method, pairs, data_sig)
-    results = rebuild_summary(root, data_sig)
-    retire_legacy_evaluations(root, method, pairs)
-    print(f"[{method}] {len(results)} MCQA-format eval configs at {root / 'eval_configs'}")
+    settings = profile_settings(
+        data_sig, seed=eval_seed, eval_batch_size=eval_batch_size,
+        max_new_tokens=max_new_tokens,
+        generation_cap=manifest["generation_cap"],
+        recipient_version=RECIPIENT_VERSION,
+    )
+    eval_dir = profile_directory(root, settings)
+    import_legacy(root, method, pairs, data_sig, eval_dir, eval_seed)
+    results = rebuild_summary(eval_dir, data_sig)
+    retire_legacy_evaluations(root, method, pairs, eval_dir)
+    print(f"[{method}] {len(results)} MCQA-format eval configs at {eval_dir}")
 
 
 def migrate_standard(root):
