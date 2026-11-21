@@ -148,6 +148,43 @@ on held-out TEST `T_only`, `C_only` and `C_T` banks. Metrics include:
 - Y through frozen T mediator replay: `Y_via_T_replay`
 - T restoration: `Y_restored_via_T`
 
+### Different-recipient transfer (also included by default)
+
+The evaluator also tests **cross-question recipients** as in MCQA:
+each saved donor intervention is transferred to a distinct, model-correct
+TEST prompt with a different ones digit. The target `Y` is computed on
+the **recipient** arithmetic context, never copied from the donor base.
+
+For each donor family `T_only`, `C_only`, and `C_T`:
+- `Y_via_T_replay_recipient_same/different`: replace T on a different
+  question with the donor's source T (`T_only`) or its C-induced T
+  (`C_only`, `C_T`). Here same/different refers to recipient's
+  natural T versus the patched T. Correct Y = `10 * patched_T + recipient_ones`.
+- For `C_only` and `C_T` also measure
+  `T_after_C_recipient_same/different`,
+  `Y_after_C_recipient_same/different`, and
+  `Joint_T_Y_after_C_recipient_same/different`:
+  patch C into a different question and evaluate the resulting T and
+  free-generated Y. Here same/different refers to recipient's
+  natural C versus donor C. The expected new tens digit is
+  `recipient_T - recipient_C + donor_C`.
+
+Recipients are assigned **deterministically** from model-correct
+filtered TEST prompts (separate from the original donor/base prompt),
+and are identical for SDAS and GDAS when using the same dataset/seed.
+The assignments cannot be selected via TEST accuracy.
+
+Previous `metrics.json` files from an evaluation run are **upgraded**
+without recomputing direct/replay/restoration: rerun the SAME
+`addition_eval_selected.py` command after updating the branch. Use
+`--seed 0` for deterministic recipient sampling, and `--skip-recipient`
+to opt out of this extra evaluation.
+
+Recipient results are saved in `metrics.json["recipient"]` and as flat
+columns such as `C_only_Y_via_T_replay_recipient_different` in
+`evaluation_standard/summary.csv` or
+`evaluation_gradual/summary.csv`.
+
 Each configuration goes to
 `evaluation_standard/C_00_T_23/metrics.json`; combined metrics go to
 `evaluation_standard/summary.csv`. Evaluations resume by checking
