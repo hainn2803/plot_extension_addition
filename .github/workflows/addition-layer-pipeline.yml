@@ -1,0 +1,29 @@
+name: Addition layer pipeline checks
+
+on:
+  push:
+    branches: ["feature/mcqa-style-layer-pipeline"]
+  pull_request:
+    paths:
+      - "addition_pipeline_utils.py"
+      - "addition_train_all_layers_standard.py"
+      - "addition_select_promising_layers.py"
+      - "addition_train_gradual_selected.py"
+      - "addition_eval_selected.py"
+      - "tests/**"
+      - ".github/workflows/addition-layer-pipeline.yml"
+
+jobs:
+  cpu-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Syntax compile new pipeline
+        run: |
+          python -m py_compile addition_pipeline_utils.py addition_train_all_layers_standard.py addition_select_promising_layers.py addition_train_gradual_selected.py addition_eval_selected.py
+      - name: Run selection unit tests
+        run: |
+          python -m unittest discover -s tests -p "test_addition_layer_selection.py" -v
