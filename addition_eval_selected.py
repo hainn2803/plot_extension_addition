@@ -1,7 +1,7 @@
 """Evaluate saved Addition Standard or Gradual DAS C -> T -> Y configurations.
 
 Uses held-out test pairs only AFTER calibration-based layer selection.
-Both SDAS and GDAS use MCQA-style eval_configs/T_L{t}__C_L{c}/
+Both SDAS and GDAS use MCQA-style eval_configs_<hash>/T_L{t}__C_L{c}/
 with metrics.json, eval_faithfulness.txt, eval_faithfulness.csv;
 cumulative config_summary.csv and all_config_metrics.csv.
 Old evaluation_<method> results are imported without rerunning inference.
@@ -23,6 +23,7 @@ from addition_gradual_snapshot import (
     validate_gradual_pair_snapshot,
 )
 from addition_eval_reports import config_dir, import_legacy, rebuild_summary
+from addition_eval_profile import profile_directory, profile_settings
 from addition_train_standard_grid import (
     build_factual_c_bank,
     clean_readout,
@@ -213,14 +214,26 @@ def main():
         print(f"{len(pairs)} configurations")
         return
 
-    # The same MCQA-style evaluation root is used for both methods.
     manifest = read_json(root / "run_manifest.json")
     if manifest["method"] != args.method:
         raise RuntimeError(f"Wrong method for evaluation directory: {root}")
-    import_legacy(root, args.method, pairs, manifest["data"])
-    existing = rebuild_summary(root, manifest["data"])
+
+    def evaluation_settings(data_sig):
+        return profile_settings(
+            data_sig, seed=args.seed, eval_batch_size=args.eval_batch_size,
+            max_new_tokens=args.max_new_tokens,
+            generation_cap=args.generation_cap,
+            recipient_version=RECIPIENT_VERSION,
+        )
+
     if args.migrate_only:
-        print(f"[saved] {root / 'eval_configs' / 'config_summary.csv'} "
+        # For old runs, the historical evaluation used the training dataset
+        # and default seed 0. This route never loads model or reads new data.
+        data_sig = manifest["data"]
+        eval_dir = profile_directory(root, evaluation_settings(data_sig))
+        import_legacy(root, args.method, pairs, data_sig, eval_dir, args.seed)
+        existing = rebuild_summary(eval_dir, data_sig)
+        print(f"[saved] {eval_dir / 'config_summary.csv'} "
               f"({len(existing)} cached configurations; no model loaded)")
         return
 
@@ -230,12 +243,18 @@ def main():
     banks = build_all_banks(tokenizer, rows)
     data_sig = dataset_signature(model, args.data_dir, args.cache_dir, args.max_new_tokens)
     manifest = read_json(root / "run_manifest.json")
-    if manifest["method"] != args.method or manifest["data"] != data_sig:
-        raise RuntimeError("Evaluation dataset does not match trained checkpoints")
     if manifest["generation_cap"] != args.generation_cap:
         raise RuntimeError("CAL and TEST must use the same generation cap")
+    if manifest.get("model") != str(model.config._name_or_path):
+        raise RuntimeError("Evaluation model differs from trained checkpoints")
+    if manifest["data"] != data_sig:
+        print("[evaluation] Different dataset from training; using its independent "
+              "hashed profile. Ensure it is a held-out test dataset.", flush=True)
 
-    eval_dir = root / "eval_configs"
+    eval_dir = profile_directory(root, evaluation_settings(data_sig))
+    if data_sig == manifest["data"]:
+        import_legacy(root, args.method, pairs, data_sig, eval_dir, args.seed)
+    rebuild_summary(eval_dir, data_sig)
     recipient_schedules = None
     for index, (c, t) in enumerate(pairs, 1):
         (c_path, c_ro_path), (t_path, t_ro_path) = get_paths(args, c, t)
@@ -243,7 +262,7 @@ def main():
             args.method, c, t, [c_path, c_ro_path, t_path, t_ro_path],
             data_sig, args.generation_cap,
         )
-        output = config_dir(root, c, t) / "metrics.json"
+        output = config_dir(eval_dir, c, t) / "metrics.json"
         saved = None
         if output.exists() and not args.force:
             previous = read_json(output)
@@ -292,13 +311,13 @@ def main():
 
         payload["signature"] = signature
         write_json(output, payload)
-        rebuild_summary(root, data_sig)
+        rebuild_summary(eval_dir, data_sig)
         print(f"  C_only: Y={payload['metrics']['C_only']['Y_after_C']:.4f} "
               f"T={payload['metrics']['C_only']['T_after_C']:.4f} "
               f"replay={payload['metrics']['C_only']['Y_via_T_replay']:.4f} "
               f"restore={payload['metrics']['C_only']['Y_restored_via_T']:.4f}")
 
-    summary = rebuild_summary(root, data_sig)
+    summary = rebuild_summary(eval_dir, data_sig)
     print(f"[saved] {eval_dir / 'config_summary.csv'} ({len(summary)} evaluations)")
 
 
