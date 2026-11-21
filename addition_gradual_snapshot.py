@@ -181,10 +181,10 @@ def main():
     # If GDAS checkpoints already exist, do not allow an unrelated selection
     # to mask pairs trained in the current run.
     actual = set()
-    for folder in (gradual_root / "pairs").glob("C_*_T_*"):
-        match = re.fullmatch(r"C_(\d+)_T_(\d+)", folder.name)
+    for folder in (gradual_root / "trained_handles").glob("T_L*__C_L*"):
+        match = re.fullmatch(r"T_L(\d+)__C_L(\d+)", folder.name)
         if match:
-            actual.add((int(match.group(1)), int(match.group(2))))
+            actual.add((int(match.group(2)), int(match.group(1))))
     if not actual.issubset(set(pairs)):
         missing = sorted(actual.difference(set(pairs)))
         raise RuntimeError(f"Existing GDAS pairs absent from selection: {missing}")
