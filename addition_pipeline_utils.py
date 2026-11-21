@@ -5,11 +5,6 @@ import hashlib
 import json
 from pathlib import Path
 
-import torch
-
-from addition_data_load import SPLITS, build_cache_manifest, file_sha256
-
-
 def parse_layers(spec, num_layers):
     if spec.strip().lower() == "all":
         return list(range(num_layers))
@@ -60,10 +55,16 @@ def read_json(path):
 
 
 def file_hash(path):
-    return file_sha256(path)
+    digest = hashlib.sha256()
+    with Path(path).open("rb") as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
 
 
 def dataset_signature(model, data_dir, cache_dir, max_new_tokens):
+    from addition_data_load import SPLITS, build_cache_manifest
+
     # Check BOTH the model-correct filtered pairs and their raw-data manifest.
     manifest = build_cache_manifest(model, data_dir, max_new_tokens)
     filtered = {}
@@ -93,6 +94,8 @@ def assert_run_manifest(root, expected):
 
 
 def load_checkpoint(path, variable, layer, method=None, t_layer=None):
+    import torch
+
     result = torch.load(path, map_location="cpu", weights_only=False)
     if result.get("variable") != variable or int(result.get("layer", -1)) != layer:
         raise RuntimeError(f"Wrong variable/layer in {path}")
