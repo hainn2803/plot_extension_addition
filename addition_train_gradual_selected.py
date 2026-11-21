@@ -16,7 +16,7 @@ from addition_das import set_seed
 from addition_neural_network import load_gemma_model
 from addition_train_standard_grid import build_factual_c_bank, fit_c_readout
 from addition_train_gradual_grid import train_c_gradual
-from addition_gradual_snapshot import freeze_t_snapshots, validate_gradual_pair_snapshot
+from addition_gradual_snapshot import freeze_t_snapshots, validate_gradual_pair_snapshot, compare_artifact_hashes
 from addition_pipeline_utils import (
     assert_run_manifest,
     check_artifacts,
@@ -34,11 +34,11 @@ from addition_pipeline_utils import (
 
 def rebuild_summary(root):
     rows = []
-    for directory in sorted((root / "pairs").glob("C_*_T_*")):
-        match = re.fullmatch(r"C_(\d+)_T_(\d+)", directory.name)
+    for directory in sorted((root / "trained_handles").glob("T_L*__C_L*")):
+        match = re.fullmatch(r"T_L(\d+)__C_L(\d+)", directory.name)
         if not match:
             continue
-        c, t = map(int, match.groups())
+        t, c = map(int, match.groups())
         ckpt_path, readout_path = gradual_paths(root, c, t)
         t_ckpt_path, t_readout_path = handle_paths(root, "T", t)
         if not all(p.exists() for p in (ckpt_path, readout_path, t_ckpt_path, t_readout_path)):
@@ -187,8 +187,12 @@ def main():
             "C_layer": c_layer, "T_layer": t_layer,
         }
         if meta_path.exists():
-            if read_json(meta_path) != identity:
-                raise RuntimeError(f"Stale GDAS dependency at {meta_path}; use a new result-dir")
+            old = read_json(meta_path)
+            if any(old.get(key) != identity[key] for key in ("run_manifest", "C_layer", "T_layer")):
+                raise RuntimeError(f"Stale GDAS training configuration at {meta_path}")
+            compare_artifact_hashes(
+                old["upstream_artifacts"], identity["upstream_artifacts"], meta_path
+            )
         elif c_path.exists() or c_ro_path.exists():
             raise RuntimeError(f"Legacy pair without dependency signature at {c_path.parent}")
         else:
