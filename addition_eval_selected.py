@@ -177,7 +177,11 @@ def main():
     parser.add_argument("--result-dir", required=True)
     parser.add_argument("--standard-root", default="results_addition_standard_all_layers_seed0",
                         help="Required source of frozen T handles for gradual")
-    parser.add_argument("--selection", help="Default is <result-dir>/selected_layers_<method>.json")
+    parser.add_argument(
+        "--selection",
+        help="Optional selection JSON. By default both methods use the Standard "
+             "CAL-selected pairs, so SDAS/GDAS are evaluated on the same grid.",
+    )
     parser.add_argument("--data-dir", default="addition_controlled_data")
     parser.add_argument("--cache-dir", default="addition_filtered_cache")
     parser.add_argument("--eval-batch-size", type=int, default=32)
@@ -194,12 +198,22 @@ def main():
     args = parser.parse_args()
 
     root = Path(args.result_dir)
-    selection_path = Path(args.selection) if args.selection else (
-        root / f"selected_layers_{args.method}.json"
-    )
+    if args.selection:
+        selection_path = Path(args.selection)
+    elif args.method == "gradual":
+        # GDAS was trained using SDAS promising candidates. Evaluate the same
+        # 20 (C,T) pairs unless the caller explicitly supplies another selection.
+        selection_path = Path(args.standard_root) / "selected_layers_standard.json"
+    else:
+        selection_path = root / "selected_layers_standard.json"
+
     selection = read_json(selection_path)
-    if selection["method"] != args.method:
-        raise ValueError(f"Wrong selection method in {selection_path}")
+    selection_method = selection.get("method")
+    if selection_method not in ("standard", "gradual"):
+        raise ValueError(f"Unrecognized selection method in {selection_path}")
+    if args.method == "standard" and selection_method != "standard":
+        raise ValueError(f"Standard DAS evaluation requires Standard selection: {selection_path}")
+    print(f"[selection] {selection_path} ({selection_method})", flush=True)
     pairs = sorted({(int(item["C_layer"]), int(item["T_layer"]))
                     for item in selection["pairs"]}, key=lambda x: (x[1], x[0]))
     if not pairs or any(c >= t or c < 0 for c, t in pairs):
