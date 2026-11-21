@@ -8,6 +8,7 @@ on:
       - "addition_pipeline_utils.py"
       - "addition_train_all_layers_standard.py"
       - "addition_select_promising_layers.py"
+      - "addition_eval_all_layers_standard.py"
       - "addition_train_gradual_selected.py"
       - "addition_eval_selected.py"
       - "tests/**"
@@ -23,7 +24,7 @@ jobs:
           python-version: "3.11"
       - name: Syntax compile new pipeline
         run: |
-          python -m py_compile addition_pipeline_utils.py addition_train_all_layers_standard.py addition_select_promising_layers.py addition_train_gradual_selected.py addition_eval_selected.py
+          python -m py_compile addition_pipeline_utils.py addition_train_all_layers_standard.py addition_select_promising_layers.py addition_eval_all_layers_standard.py addition_train_gradual_selected.py addition_eval_selected.py
       - name: Run selection unit tests
         run: |
           python -m unittest discover -s tests -p "test_addition_layer_selection.py" -v
