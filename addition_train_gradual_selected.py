@@ -73,6 +73,24 @@ def requested_pairs(args, root, model):
         chosen = read_json(selection)
         if chosen.get("method") != "standard":
             raise ValueError(f"Expected Standard CAL selection: {selection}")
+        if chosen.get("selection_source") != "addition_eval_all_layers_standard.py":
+            raise RuntimeError(
+                "Run addition_eval_all_layers_standard.py after the full-layer "
+                "Standard sweep, before starting GDAS."
+            )
+        # Reject stale selection if any CAL-selected C/T checkpoint changed.
+        signatures = chosen.get("calibration_signatures", {})
+        for pair in chosen["pairs"]:
+            for variable, layer in (("C", pair["C_layer"]), ("T", pair["T_layer"])):
+                expected = signatures.get(f"{variable}_L{layer}")
+                if expected is None:
+                    raise RuntimeError(f"Missing CAL signature for {variable} L{layer}")
+                ckpt_path, readout_path = handle_paths(args.standard_root, variable, layer)
+                if expected["artifacts"] != check_artifacts([ckpt_path, readout_path]):
+                    raise RuntimeError(
+                        f"Stale CAL selection for {variable} L{layer}: "
+                        "rerun addition_eval_all_layers_standard.py"
+                    )
         pairs = chosen["pairs"]
     else:
         selection = Path(args.selection) if args.selection else (
