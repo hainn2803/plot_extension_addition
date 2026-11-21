@@ -1,6 +1,6 @@
 """Common MCQA-style evaluation layout for both Addition SDAS and GDAS.
 
-Both methods use <result-dir>/eval_configs/T_L{t}__C_L{c}/ with
+Both methods use <result-dir>/eval_configs_<hash>/T_L{t}__C_L{c}/ with
 metrics.json, eval_faithfulness.txt and eval_faithfulness.csv.
 The shared evaluation root also holds config_summary.csv and
 all_config_metrics.csv. Old evaluation_<method>/ results are imported
@@ -16,38 +16,51 @@ from addition_pipeline_utils import read_json, write_csv
 FAMILIES = ("T_only", "C_only", "C_T")
 
 
-def config_dir(root, c_layer, t_layer):
-    return Path(root) / "eval_configs" / f"T_L{int(t_layer)}__C_L{int(c_layer)}"
+def config_dir(eval_dir, c_layer, t_layer):
+    return Path(eval_dir) / f"T_L{int(t_layer)}__C_L{int(c_layer)}"
 
 
 def legacy_dir(root, method, c_layer, t_layer):
     return Path(root) / f"evaluation_{method}" / f"C_{int(c_layer):02d}_T_{int(t_layer):02d}"
 
 
-def import_legacy(root, method, pairs, data_sig):
-    """Copy old evaluated JSON into canonical paths, preserving originals.
+def import_legacy(root, method, pairs, data_sig, eval_dir, seed):
+    """Import earlier result layouts to a hashed MCQA evaluation profile.
 
-    Never overwrite a canonical result. Reject a mismatched dataset, method,
-    or pair identity so a previous run cannot contaminate this run.
+    Legacy directories did not identify the evaluation seed in their path.
+    Only seed=0 may import legacy data without an explicit recipient_seed.
+    Importing an already-run evaluation never runs GPU inference.
     """
+    root = Path(root)
+    eval_dir = Path(eval_dir)
+    if seed != 0:
+        return 0
     count = 0
     for c, t in pairs:
-        old = legacy_dir(root, method, c, t) / "metrics.json"
-        new = config_dir(root, c, t) / "metrics.json"
-        if not old.is_file() or new.exists():
+        destination = config_dir(eval_dir, c, t) / "metrics.json"
+        if destination.exists():
             continue
-        payload = read_json(old)
-        if (payload.get("method") != method or
-                payload.get("C_layer") != c or payload.get("T_layer") != t):
-            raise RuntimeError(f"Unexpected legacy evaluation identity: {old}")
-        if payload.get("signature", {}).get("data") != data_sig:
-            raise RuntimeError(f"Legacy evaluation has different dataset: {old}")
-        new.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(old, new)
-        count += 1
-        print(f"[import old evaluation] {old} -> {new}", flush=True)
+        sources = [
+            legacy_dir(root, method, c, t) / "metrics.json",
+            config_dir(root / "eval_configs", c, t) / "metrics.json",
+        ]
+        for old in sources:
+            if not old.is_file():
+                continue
+            payload = read_json(old)
+            if (payload.get("method") != method or
+                    payload.get("C_layer") != c or payload.get("T_layer") != t):
+                raise RuntimeError(f"Unexpected legacy evaluation identity: {old}")
+            if payload.get("signature", {}).get("data") != data_sig:
+                continue
+            if payload.get("recipient") and payload.get("recipient_seed", 0) != seed:
+                continue
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(old, destination)
+            count += 1
+            print(f"[import old evaluation] {old} -> {destination}", flush=True)
+            break
     return count
-
 
 def classify_metric(metric):
     if "recipient_" in metric:
@@ -159,17 +172,16 @@ def write_config_reports(config_folder, payload):
     )
 
 
-def rebuild_summary(root, data_sig):
-    """Recreate MCQA-style files from cached metrics.json, no GPU necessary."""
-    root = Path(root)
-    evaluation_root = root / "eval_configs"
+def rebuild_summary(eval_dir, data_sig):
+    """Recreate MCQA-style reports for one eval_configs_<hash> profile."""
+    evaluation_root = Path(eval_dir)
     summary_rows = []
     details = []
     for path in sorted(evaluation_root.glob("T_L*__C_L*/metrics.json")):
         payload = read_json(path)
         if payload.get("signature", {}).get("data") != data_sig:
             continue
-        if path.parent != config_dir(root, payload["C_layer"], payload["T_layer"]):
+        if path.parent != config_dir(evaluation_root, payload["C_layer"], payload["T_layer"]):
             raise RuntimeError(f"Result stored in wrong configuration directory: {path}")
         write_config_reports(path.parent, payload)
         summary_rows.append(flatten(payload))
