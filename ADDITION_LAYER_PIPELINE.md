@@ -1,9 +1,8 @@
 # Addition C -> T -> Y: MCQA-style layer pipeline
 
-This is a **train -> select -> evaluate** pipeline for the two-variable
-causal abstraction `C -> T -> Y`, patterned after the MCQA
-`mcqa_train_all_layers_no_eval.py` / `mcqa_eval_saved_all_layers.py`
-and train-only GDAS workflow.
+This pipeline follows **SDAS full layer training -> CAL evaluation and promising
+layer selection -> GDAS training ONLY on those candidates**. Chain-level
+test evaluation comes after training, not before GDAS.
 
 - **C** = carry from ones column
 - **T** = tens digit after carry
@@ -11,8 +10,45 @@ and train-only GDAS workflow.
 
 The original `addition_train_standard_grid.py` and
 `addition_train_gradual_grid.py` are left intact. The new files reuse
-their loss functions, handle trainers, frozen readouts, and causal-chain
-evaluation functions.
+their loss functions, handle trainers, readouts, and chain evaluation.
+
+## Quick start (run in this exact order)
+
+```bash
+# 1. Train SDAS, all blocks for both variables
+python3 addition_train_all_layers_standard.py \
+  --result-dir results_addition_standard_all_layers_seed0 \
+  --layers all --variables T,C --seed 0
+
+# 2. Evaluate CAL IIA for every SDAS handle, print/save promising C/T layers
+python3 addition_eval_all_layers_standard.py \
+  --result-dir results_addition_standard_all_layers_seed0 \
+  --threshold-pct 5
+
+# 3. GDAS trains ONLY the (C,T) candidate pairs from step 2
+python3 addition_train_gradual_selected.py \
+  --standard-root results_addition_standard_all_layers_seed0 \
+  --result-dir results_addition_gradual_selected_seed0 \
+  --lambda-med 2 --lambda-readout 2 --seed 0
+
+# 4. Optionally evaluate chain-level faithfulness for both methods afterward
+python3 addition_eval_selected.py \
+  --method standard \
+  --result-dir results_addition_standard_all_layers_seed0
+
+python3 addition_select_promising_layers.py \
+  --method gradual \
+  --result-dir results_addition_gradual_selected_seed0 \
+  --threshold-pct 5
+
+python3 addition_eval_selected.py \
+  --method gradual \
+  --standard-root results_addition_standard_all_layers_seed0 \
+  --result-dir results_addition_gradual_selected_seed0
+```
+
+The step-2 evaluation uses the **validation/CAL split only**; it does not
+touch test pairs. The final step-4 evaluations use held-out TEST.
 
 ## 0. Prepare data
 
@@ -57,29 +93,45 @@ or `--variables C --layers 0,1,2`. Reuse the same result directory
 only with identical seed, model, data and training hyperparameters.
 Changing those requires a new result directory.
 
-## 2. Choose promising Standard layers
+## 2. Evaluate ALL Standard layers on CAL, then select promising candidates
 
 ```bash
-python3 addition_select_promising_layers.py \
-  --method standard \
+python3 addition_eval_all_layers_standard.py \
   --result-dir results_addition_standard_all_layers_seed0 \
   --threshold-pct 5
 ```
 
-Per variable, keep all layers satisfying
+This file **actually reloads and evaluates every saved SDAS handle**,
+rather than merely ranking the training log. For each layer it runs
+free-autoregressive interventions on the CAL validation bank, recomputes
+numeric output IIA, checks C/T readout accuracy, and writes:
+
+```text
+results_addition_standard_all_layers_seed0/
+  calibration_standard/
+    C_layer_00.json
+    T_layer_00.json
+    ...
+    summary.csv              # CAL IIA + clean readout for every layer
+  selected_layers_standard.json
+  selected_layers_standard.csv
+```
+
+Select each variable's layers using the MCQA rule:
 
 ```
-cal_iia(layer) >= max_cal_iia(variable) - 0.05
+CAL_IIA(layer) >= max_CAL_IIA(variable) - 0.05
 ```
 
-The threshold means **5 percentage points**, not 5% relative.
-Take the Cartesian product and exclude invalid `C >= T` configurations.
+Five percentage **points**, not 5% relative. Take the Cartesian
+product of the selected C/T layers, retaining only configurations
+where `C < T`. Both the layer lists and valid pairs are printed.
 
-Outputs:
-- `selected_layers_standard.json`: C and T candidate layer lists plus valid pair list
-- `selected_layers_standard.csv`: one row per selected (C,T) pair
+**Step 3 GDAS reads this saved selection by default.** It validates
+that candidate checkpoints/readouts are still identical to those
+evaluated in step 2. If you change them, rerun the CAL eval first.
 
-## 3. Evaluate selected Standard configurations
+## 3. Final Standard DAS configuration evaluation (optional, after GDAS training)
 
 ```bash
 python3 addition_eval_selected.py \
@@ -87,20 +139,19 @@ python3 addition_eval_selected.py \
   --result-dir results_addition_standard_all_layers_seed0
 ```
 
-This **does not retrain**. It evaluates every saved (C,T) configuration
-on test `T_only`, `C_only` and `C_T` banks. It reports:
+This does **not** retrain. It evaluates every selected (C,T) configuration
+on held-out TEST `T_only`, `C_only` and `C_T` banks. Metrics include:
 
-- clean C/T readout accuracies
+- clean C/T readout
 - T direct intervention: `T_after_T`, `Y_after_T`, joint accuracy
 - C intervention: `C_after_C`, `T_after_C`, `Y_after_C`, joint accuracy
-- C-mediated Y via frozen T replay: `Y_via_T_replay`
-- restoration at frozen T: `Y_restored_via_T`
+- Y through frozen T mediator replay: `Y_via_T_replay`
+- T restoration: `Y_restored_via_T`
 
-Each configuration is saved immediately to
-`evaluation_standard/C_00_T_23/metrics.json`, and metrics are collected
-in `evaluation_standard/summary.csv`. Run again to skip existing
-evaluations, or pass `--force` to recompute. Saved results are reused
-only if checkpoints, filtered data and generation settings still match.
+Each configuration goes to
+`evaluation_standard/C_00_T_23/metrics.json`; combined metrics go to
+`evaluation_standard/summary.csv`. Evaluations resume by checking
+exact artifact/data/generation signatures.
 
 ## 4. GDAS: train C conditioned on each candidate T
 
@@ -113,7 +164,7 @@ python3 addition_train_gradual_selected.py \
   --seed 0
 ```
 
-By default, train GDAS on the **Standard-selected (C,T) pairs**.
+By default, train GDAS **only on (C,T) candidate pairs saved by the Step-2 CAL eval**.
 The exact frozen **T checkpoint and T readout are reused from Standard**
 (no independent/retrained T in GDAS). C uses direct Y sequence loss,
 a frozen-T mediator/replay loss, and a T readout loss.
