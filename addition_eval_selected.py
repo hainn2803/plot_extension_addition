@@ -15,6 +15,11 @@ from addition_data_load import build_all_banks, load_addition_rows
 from addition_neural_network import load_gemma_model
 from addition_recipient_schedule import RECIPIENT_VERSION, prepare_schedules
 from addition_eval_recipient_transfer import eval_recipient
+from addition_gradual_snapshot import (
+    TRAINING_SELECTION_NAME,
+    artifact_hashes_by_name,
+    validate_gradual_pair_snapshot,
+)
 from addition_train_standard_grid import (
     build_factual_c_bank,
     clean_readout,
@@ -32,6 +37,22 @@ from addition_pipeline_utils import (
     write_csv,
     write_json,
 )
+
+
+def compatible_signature(saved, current):
+    """Reuse metrics after relocating the same exact T checkpoint bytes."""
+    if saved == current:
+        return True
+    if not isinstance(saved, dict):
+        return False
+    for field in set(current).union(saved):
+        if field != "artifacts" and saved.get(field) != current.get(field):
+            return False
+    try:
+        return (artifact_hashes_by_name(saved["artifacts"])
+                == artifact_hashes_by_name(current["artifacts"]))
+    except (KeyError, TypeError, ValueError):
+        return False
 
 
 def flatten(payload):
@@ -71,8 +92,8 @@ def rebuild_summary(directory, data_sig):
 
 
 def get_paths(args, c_layer, t_layer):
-    t_root = args.standard_root if args.method == "gradual" else args.result_dir
-    t_paths = handle_paths(t_root, "T", t_layer)
+    # Frozen T is copied into every GDAS run: no SDAS directory is needed.
+    t_paths = handle_paths(args.result_dir, "T", t_layer)
     if args.method == "standard":
         c_paths = handle_paths(args.result_dir, "C", c_layer)
     else:
@@ -85,9 +106,7 @@ def load_pair(args, c_layer, t_layer):
     check_artifacts([c_path, c_ro_path, t_path, t_ro_path])
 
     if args.method == "gradual":
-        metadata = read_json(c_path.parent / "train_signature.json")
-        if metadata["upstream_artifacts"] != check_artifacts([t_path, t_ro_path]):
-            raise RuntimeError(f"Frozen T artifacts changed since GDAS C training: {c_path}")
+        validate_gradual_pair_snapshot(args.result_dir, c_layer, t_layer)
 
     c_cp = load_checkpoint(c_path, "C", c_layer, args.method,
                            t_layer if args.method == "gradual" else None)
@@ -175,12 +194,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--method", choices=("standard", "gradual"), required=True)
     parser.add_argument("--result-dir", required=True)
-    parser.add_argument("--standard-root", default="results_addition_standard_all_layers_seed0",
-                        help="Required source of frozen T handles for gradual")
+    parser.add_argument("--standard-root", default=None,
+                        help="Legacy accepted flag; no longer needed after T snapshot")
     parser.add_argument(
         "--selection",
-        help="Optional selection JSON. By default both methods use the Standard "
-             "CAL-selected pairs, so SDAS/GDAS are evaluated on the same grid.",
+        help="Optional selection JSON. GDAS defaults to its frozen training_pairs.json; "
+             "SDAS defaults to selected_layers_standard.json.",
     )
     parser.add_argument("--data-dir", default="addition_controlled_data")
     parser.add_argument("--cache-dir", default="addition_filtered_cache")
@@ -201,9 +220,8 @@ def main():
     if args.selection:
         selection_path = Path(args.selection)
     elif args.method == "gradual":
-        # GDAS was trained using SDAS promising candidates. Evaluate the same
-        # 20 (C,T) pairs unless the caller explicitly supplies another selection.
-        selection_path = Path(args.standard_root) / "selected_layers_standard.json"
+        # This records exactly the grid chosen at train time.
+        selection_path = root / TRAINING_SELECTION_NAME
     else:
         selection_path = root / "selected_layers_standard.json"
 
@@ -234,9 +252,6 @@ def main():
         raise RuntimeError("Evaluation dataset does not match trained checkpoints")
     if manifest["generation_cap"] != args.generation_cap:
         raise RuntimeError("CAL and TEST must use the same generation cap")
-    if args.method == "gradual":
-        if manifest["standard_root"] != str(Path(args.standard_root).resolve()):
-            raise RuntimeError("Wrong Standard T root for this GDAS run")
 
     eval_dir = root / f"evaluation_{args.method}"
     recipient_schedules = None
@@ -250,7 +265,7 @@ def main():
         saved = None
         if output.exists() and not args.force:
             previous = read_json(output)
-            if previous.get("signature") == signature:
+            if compatible_signature(previous.get("signature"), signature):
                 saved = previous
 
         recipient_done = False
@@ -264,6 +279,9 @@ def main():
                 )
             )
         if saved is not None and (args.skip_recipient or recipient_done):
+            if saved["signature"] != signature:
+                saved["signature"] = signature
+                write_json(output, saved)
             print(f"[cached {index}/{len(pairs)}] C{c}->T{t}")
             continue
 
