@@ -13,6 +13,8 @@ import torch
 
 from addition_data_load import build_all_banks, load_addition_rows
 from addition_neural_network import load_gemma_model
+from addition_recipient_schedule import RECIPIENT_VERSION, prepare_schedules
+from addition_eval_recipient_transfer import eval_recipient
 from addition_train_standard_grid import (
     build_factual_c_bank,
     clean_readout,
@@ -45,6 +47,8 @@ def flatten(payload):
     for family in ("T_only", "C_only", "C_T"):
         for metric, value in payload["metrics"][family].items():
             row[f"{family}_{metric}"] = value
+        for metric, value in payload.get("recipient", {}).get(family, {}).items():
+            row[f"{family}_{metric}"] = value
     return row
 
 
@@ -57,7 +61,12 @@ def rebuild_summary(directory, data_sig):
         rows.append(flatten(payload))
     rows.sort(key=lambda row: (row["T_layer"], row["C_layer"]))
     if rows:
-        write_csv(directory / "summary.csv", rows)
+        fields = list(rows[0])
+        for row in rows[1:]:
+            for field in row:
+                if field not in fields:
+                    fields.append(field)
+        write_csv(directory / "summary.csv", rows, fields)
     return rows
 
 
@@ -147,6 +156,21 @@ def evaluate_one(args, model, tokenizer, rows, banks, c_layer, t_layer,
     }
 
 
+@torch.no_grad()
+def evaluate_recipient_only(args, model, tokenizer, banks, schedules,
+                            c_layer, t_layer, c_cp, c_ro, t_cp, t_ro):
+    device = next(model.parameters()).device
+    Q_c = c_cp["basis"].float().to(device)
+    Q_t = t_cp["basis"].float().to(device)
+    W_t = t_ro["W_T"].float().to(device)
+    b_t = t_ro["b_T"].float().to(device)
+    return eval_recipient(
+        model, tokenizer, banks, schedules, banks["prefix_ids"],
+        Q_c, c_layer, Q_t, t_layer, W_t, b_t,
+        args.eval_batch_size, args.generation_cap,
+    )
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--method", choices=("standard", "gradual"), required=True)
@@ -160,6 +184,10 @@ def main():
     parser.add_argument("--max-new-tokens", type=int, default=4)
     parser.add_argument("--generation-cap", type=int, default=8)
     parser.add_argument("--device", default="cuda")
+    parser.add_argument("--seed", type=int, default=0,
+                        help="Deterministic cross-question recipient assignments")
+    parser.add_argument("--skip-recipient", action="store_true",
+                        help="Skip same/different recipient transfer experiments")
     parser.add_argument("--force", action="store_true")
     parser.add_argument("--list-only", action="store_true")
     parser.add_argument("--force-rebuild-cache", action="store_true")
@@ -197,6 +225,7 @@ def main():
             raise RuntimeError("Wrong Standard T root for this GDAS run")
 
     eval_dir = root / f"evaluation_{args.method}"
+    recipient_schedules = None
     for index, (c, t) in enumerate(pairs, 1):
         (c_path, c_ro_path), (t_path, t_ro_path) = get_paths(args, c, t)
         signature = evaluation_signature(
@@ -204,16 +233,49 @@ def main():
             data_sig, args.generation_cap,
         )
         output = eval_dir / f"C_{c:02d}_T_{t:02d}" / "metrics.json"
+        saved = None
         if output.exists() and not args.force:
-            saved = read_json(output)
-            if saved.get("signature") == signature:
-                print(f"[cached {index}/{len(pairs)}] C{c}->T{t}")
-                continue
+            previous = read_json(output)
+            if previous.get("signature") == signature:
+                saved = previous
 
-        print(f"[evaluate {index}/{len(pairs)}] {args.method} C{c}->T{t}", flush=True)
+        recipient_done = False
+        if saved is not None:
+            recipient_done = (
+                saved.get("recipient_version") == RECIPIENT_VERSION
+                and saved.get("recipient_seed") == args.seed
+                and all(
+                    family in saved.get("recipient", {})
+                    for family in ("T_only", "C_only", "C_T")
+                )
+            )
+        if saved is not None and (args.skip_recipient or recipient_done):
+            print(f"[cached {index}/{len(pairs)}] C{c}->T{t}")
+            continue
+
         c_cp, c_ro, t_cp, t_ro = load_pair(args, c, t)
-        payload = evaluate_one(args, model, tokenizer, rows, banks, c, t,
-                               c_cp, c_ro, t_cp, t_ro)
+        if saved is not None:
+            # Upgrade old completed configurations without rerunning expensive
+            # direct, replay and restoration tests.
+            print(f"[recipient upgrade {index}/{len(pairs)}] C{c}->T{t}", flush=True)
+            payload = saved
+        else:
+            print(f"[evaluate {index}/{len(pairs)}] {args.method} C{c}->T{t}", flush=True)
+            payload = evaluate_one(args, model, tokenizer, rows, banks, c, t,
+                                   c_cp, c_ro, t_cp, t_ro)
+
+        if not args.skip_recipient:
+            if recipient_schedules is None:
+                recipient_schedules = prepare_schedules(rows["test"], args.seed)
+            payload["recipient"] = evaluate_recipient_only(
+                args, model, tokenizer, banks, recipient_schedules,
+                c, t, c_cp, c_ro, t_cp, t_ro,
+            )
+            payload["recipient_version"] = RECIPIENT_VERSION
+            payload["recipient_seed"] = args.seed
+            print(f"  different-recipient T replay (C_only) = "
+                  f"{payload['recipient']['C_only']['Y_via_T_replay_recipient_different']:.4f}")
+
         payload["signature"] = signature
         write_json(output, payload)
         rebuild_summary(eval_dir, data_sig)
