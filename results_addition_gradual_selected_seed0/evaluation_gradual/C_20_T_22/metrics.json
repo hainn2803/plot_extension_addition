@@ -1,0 +1,102 @@
+{
+  "C_layer": 20,
+  "T_layer": 22,
+  "calibration": {
+    "C_cal_iia": 0.9696969985961914,
+    "T_cal_iia": 0.9225589036941528
+  },
+  "clean": {
+    "C_base": 0.9800000190734863,
+    "C_source": 0.9933333396911621,
+    "T_base": 1.0,
+    "T_source": 1.0
+  },
+  "method": "gradual",
+  "metrics": {
+    "C_T": {
+      "C_after_C": 1.0,
+      "Joint_C_T_Y_after_C": 0.7866666913032532,
+      "T_after_C": 0.7866666913032532,
+      "Y_after_C": 0.9766666889190674,
+      "Y_restored_via_T": 0.9300000071525574,
+      "Y_via_T_replay": 0.7333333492279053
+    },
+    "C_only": {
+      "C_after_C": 0.9933333396911621,
+      "Joint_C_T_Y_after_C": 0.9833333492279053,
+      "T_after_C": 0.996666669845581,
+      "Y_after_C": 0.9933333396911621,
+      "Y_restored_via_T": 0.949999988079071,
+      "Y_via_T_replay": 0.9733333587646484
+    },
+    "T_only": {
+      "Joint_T_Y_after_T": 0.875420868396759,
+      "T_after_T": 1.0,
+      "Y_after_T": 0.875420868396759
+    }
+  },
+  "recipient": {
+    "C_T": {
+      "Joint_T_Y_after_C_recipient_different": 0.6000000238418579,
+      "Joint_T_Y_after_C_recipient_same": 0.7833333611488342,
+      "T_after_C_recipient_different": 0.653333306312561,
+      "T_after_C_recipient_same": 0.800000011920929,
+      "Y_after_C_recipient_different": 0.7633333206176758,
+      "Y_after_C_recipient_same": 0.9399999976158142,
+      "Y_via_T_replay_recipient_different": 0.6899999976158142,
+      "Y_via_T_replay_recipient_same": 0.9366666674613953
+    },
+    "C_only": {
+      "Joint_T_Y_after_C_recipient_different": 0.6066666841506958,
+      "Joint_T_Y_after_C_recipient_same": 0.7900000214576721,
+      "T_after_C_recipient_different": 0.6633333563804626,
+      "T_after_C_recipient_same": 0.8266666531562805,
+      "Y_after_C_recipient_different": 0.7866666913032532,
+      "Y_after_C_recipient_same": 0.903333306312561,
+      "Y_via_T_replay_recipient_different": 0.7766666412353516,
+      "Y_via_T_replay_recipient_same": 0.9900000095367432
+    },
+    "T_only": {
+      "Y_via_T_replay_recipient_different": 0.7710437774658203,
+      "Y_via_T_replay_recipient_same": 0.9865319728851318
+    }
+  },
+  "recipient_seed": 0,
+  "recipient_version": 1,
+  "signature": {
+    "C_layer": 20,
+    "T_layer": 22,
+    "artifacts": {
+      "results_addition_gradual_selected_seed0/pairs/C_20_T_22/c_readout_LogisticRegression.pt": "4da44d861e21e42a1a7ebd6455acbaf6092367f5a3044b25ea7a28c06225f3d0",
+      "results_addition_gradual_selected_seed0/pairs/C_20_T_22/das_c.pt": "a08aa7b1d4f5a323aba9c404d259373fdfe65e5c33a811486f875a2a7bdaedc3",
+      "results_addition_standard_all_layers_seed0/T_handles/T_layer_22/das_t.pt": "dfb07f005271c2c47960a89c8a9396fe68c261de4a7c9ea187ca3d8d400a7d3f",
+      "results_addition_standard_all_layers_seed0/T_handles/T_layer_22/t_readout_LogisticRegression.pt": "d9d9aa5fea59c7872b5d17c8ae2f25c584052c8ad4c05d56052bbcde5551c8a1"
+    },
+    "data": {
+      "filtered": {
+        "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+        "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+        "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+        "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+        "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+        "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+        "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+        "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+        "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+      },
+      "raw": {
+        "cache_version": 2,
+        "max_new_tokens": 4,
+        "model": "google/gemma-2-2b",
+        "raw_files": {
+          "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+          "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+          "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+        }
+      }
+    },
+    "generation_cap": 8,
+    "method": "gradual",
+    "metric_version": "free_autoregressive_numeric_v2"
+  }
+}

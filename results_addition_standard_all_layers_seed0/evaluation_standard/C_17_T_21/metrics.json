@@ -1,0 +1,102 @@
+{
+  "C_layer": 17,
+  "T_layer": 21,
+  "calibration": {
+    "C_cal_iia": 1.0,
+    "T_cal_iia": 0.9292929172515869
+  },
+  "clean": {
+    "C_base": 1.0,
+    "C_source": 0.996666669845581,
+    "T_base": 0.9898989796638489,
+    "T_source": 1.0
+  },
+  "method": "standard",
+  "metrics": {
+    "C_T": {
+      "C_after_C": 1.0,
+      "Joint_C_T_Y_after_C": 0.9700000286102295,
+      "T_after_C": 0.9700000286102295,
+      "Y_after_C": 1.0,
+      "Y_restored_via_T": 0.8866666555404663,
+      "Y_via_T_replay": 0.8066666722297668
+    },
+    "C_only": {
+      "C_after_C": 0.996666669845581,
+      "Joint_C_T_Y_after_C": 0.9100000262260437,
+      "T_after_C": 0.9133333563804626,
+      "Y_after_C": 1.0,
+      "Y_restored_via_T": 0.9100000262260437,
+      "Y_via_T_replay": 0.7733333110809326
+    },
+    "T_only": {
+      "Joint_T_Y_after_T": 0.8922559022903442,
+      "T_after_T": 1.0,
+      "Y_after_T": 0.8922559022903442
+    }
+  },
+  "recipient": {
+    "C_T": {
+      "Joint_T_Y_after_C_recipient_different": 0.800000011920929,
+      "Joint_T_Y_after_C_recipient_same": 0.9333333373069763,
+      "T_after_C_recipient_different": 0.8133333325386047,
+      "T_after_C_recipient_same": 0.9466666579246521,
+      "Y_after_C_recipient_different": 0.9433333277702332,
+      "Y_after_C_recipient_same": 0.9800000190734863,
+      "Y_via_T_replay_recipient_different": 0.7633333206176758,
+      "Y_via_T_replay_recipient_same": 0.9866666793823242
+    },
+    "C_only": {
+      "Joint_T_Y_after_C_recipient_different": 0.846666693687439,
+      "Joint_T_Y_after_C_recipient_same": 0.9100000262260437,
+      "T_after_C_recipient_different": 0.8533333539962769,
+      "T_after_C_recipient_same": 0.9166666865348816,
+      "Y_after_C_recipient_different": 0.9733333587646484,
+      "Y_after_C_recipient_same": 0.9700000286102295,
+      "Y_via_T_replay_recipient_different": 0.75,
+      "Y_via_T_replay_recipient_same": 0.9700000286102295
+    },
+    "T_only": {
+      "Y_via_T_replay_recipient_different": 0.8148148059844971,
+      "Y_via_T_replay_recipient_same": 0.9898989796638489
+    }
+  },
+  "recipient_seed": 0,
+  "recipient_version": 1,
+  "signature": {
+    "C_layer": 17,
+    "T_layer": 21,
+    "artifacts": {
+      "results_addition_standard_all_layers_seed0/C_handles/C_layer_17/c_readout_LogisticRegression.pt": "67d4f3bb346c35698bb1a3f24b61928a4afe011f892c431aea9714be9036ad12",
+      "results_addition_standard_all_layers_seed0/C_handles/C_layer_17/das_c.pt": "14be3261ba857ce668bb7ed4921c6989fcb24dd5428a1cb724e6c038d852c855",
+      "results_addition_standard_all_layers_seed0/T_handles/T_layer_21/das_t.pt": "4579c117011106c0920b8783b4f8cab7071fd671fbf5335cf59d5efad9228e9c",
+      "results_addition_standard_all_layers_seed0/T_handles/T_layer_21/t_readout_LogisticRegression.pt": "4dd2a4d7723c8ffd9d03e4839a7def9983320e128edabef7a44afe93fd000a1f"
+    },
+    "data": {
+      "filtered": {
+        "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+        "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+        "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+        "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+        "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+        "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+        "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+        "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+        "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+      },
+      "raw": {
+        "cache_version": 2,
+        "max_new_tokens": 4,
+        "model": "google/gemma-2-2b",
+        "raw_files": {
+          "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+          "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+          "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+        }
+      }
+    },
+    "generation_cap": 8,
+    "method": "standard",
+    "metric_version": "free_autoregressive_numeric_v2"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "cal_iia": 0.3905723989009857,
+  "checkpoint_best_cal_iia": 0.3905723989009857,
+  "layer": 25,
+  "readout_cal_base": 1.0,
+  "readout_cal_source": 1.0,
+  "signature": {
+    "artifacts": {
+      "results_addition_standard_all_layers_seed0/C_handles/C_layer_25/c_readout_LogisticRegression.pt": "ab1adafa19967856a90087ab70555aaa6a3a692ca6b4a011267e4186fb887442",
+      "results_addition_standard_all_layers_seed0/C_handles/C_layer_25/das_c.pt": "6388c4a8c3c8762a12f274b11a94307c2ef9d0a78d0388cdf1900b973e111db4"
+    },
+    "data": {
+      "filtered": {
+        "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+        "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+        "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+        "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+        "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+        "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+        "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+        "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+        "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+      },
+      "raw": {
+        "cache_version": 2,
+        "max_new_tokens": 4,
+        "model": "google/gemma-2-2b",
+        "raw_files": {
+          "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+          "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+          "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+        }
+      }
+    },
+    "generation_cap": 8,
+    "layer": 25,
+    "metric": "free_autoregressive_numeric_v2",
+    "split": "validation",
+    "variable": "C"
+  },
+  "variable": "C"
+}
