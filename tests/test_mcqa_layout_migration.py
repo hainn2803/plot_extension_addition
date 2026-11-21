@@ -5,8 +5,10 @@ import unittest
 from pathlib import Path
 
 from addition_eval_reports import (
-    config_dir, detail_rows, flatten, import_legacy, rebuild_summary,
+    config_dir, detail_rows, flatten,
 )
+from addition_eval_profile import profile_name, profile_settings
+from addition_recipient_schedule import RECIPIENT_VERSION
 from addition_gradual_snapshot import TRAINING_SELECTION_NAME, validate_gradual_pair_snapshot
 from addition_migrate_mcqa_layout import migrate_standard, migrate_gradual
 from addition_pipeline_utils import (
@@ -125,16 +127,29 @@ class McqaLayoutTests(unittest.TestCase):
         self.assertEqual(file_hash(t_checkpoint), file_hash(gdas_t_checkpoint))
         validate_gradual_pair_snapshot(self.gradual, self.c, self.t)
 
-        self.assertEqual(config_dir(self.standard, self.c, self.t).name, "T_L18__C_L16")
-        self.assertEqual(config_dir(self.gradual, self.c, self.t).name, "T_L18__C_L16")
+        settings = profile_settings(
+            self.data, seed=0, eval_batch_size=32, max_new_tokens=4,
+            generation_cap=8, recipient_version=RECIPIENT_VERSION,
+        )
+        profile = profile_name(settings)
+        self.assertTrue(profile.startswith("eval_configs_"))
+        self.assertEqual(
+            config_dir(self.standard / profile, self.c, self.t).name,
+            "T_L18__C_L16",
+        )
+        self.assertEqual(
+            config_dir(self.gradual / profile, self.c, self.t).name,
+            "T_L18__C_L16",
+        )
         for root in (self.standard, self.gradual):
-            eval_dir = root / "eval_configs"
+            eval_dir = root / profile
             for path in (
                 eval_dir / "T_L18__C_L16" / "metrics.json",
                 eval_dir / "T_L18__C_L16" / "eval_faithfulness.txt",
                 eval_dir / "T_L18__C_L16" / "eval_faithfulness.csv",
                 eval_dir / "config_summary.csv",
                 eval_dir / "all_config_metrics.csv",
+                eval_dir / "eval_settings.json",
             ):
                 self.assertTrue(path.exists(), f"Missing {path}")
         self.assertEqual(
