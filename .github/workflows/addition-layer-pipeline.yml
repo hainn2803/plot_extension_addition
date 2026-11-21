@@ -11,6 +11,8 @@ on:
       - "addition_eval_all_layers_standard.py"
       - "addition_train_gradual_selected.py"
       - "addition_eval_selected.py"
+      - "addition_eval_recipient_transfer.py"
+      - "addition_recipient_schedule.py"
       - "tests/**"
       - ".github/workflows/addition-layer-pipeline.yml"
 
@@ -24,7 +26,7 @@ jobs:
           python-version: "3.11"
       - name: Syntax compile new pipeline
         run: |
-          python -m py_compile addition_pipeline_utils.py addition_train_all_layers_standard.py addition_select_promising_layers.py addition_eval_all_layers_standard.py addition_train_gradual_selected.py addition_eval_selected.py
-      - name: Run selection unit tests
+          python -m py_compile addition_pipeline_utils.py addition_train_all_layers_standard.py addition_select_promising_layers.py addition_eval_all_layers_standard.py addition_train_gradual_selected.py addition_eval_selected.py addition_eval_recipient_transfer.py addition_recipient_schedule.py
+      - name: Run selection and recipient unit tests
         run: |
-          python -m unittest discover -s tests -p "test_addition_layer_selection.py" -v
+          python -m unittest discover -s tests -p "test_*.py" -v
