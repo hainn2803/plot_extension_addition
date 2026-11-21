@@ -36,11 +36,6 @@ python3 addition_eval_selected.py \
   --method standard \
   --result-dir results_addition_standard_all_layers_seed0
 
-python3 addition_select_promising_layers.py \
-  --method gradual \
-  --result-dir results_addition_gradual_selected_seed0 \
-  --threshold-pct 5
-
 python3 addition_eval_selected.py \
   --method gradual \
   --standard-root results_addition_standard_all_layers_seed0 \
@@ -253,13 +248,28 @@ python3 addition_eval_selected.py \
   --result-dir results_addition_gradual_selected_seed0
 ```
 
-For GDAS, retain the best calibrated T layers (using the same frozen
-Standard T calibration IIA); **within each T layer**, retain C layers
-whose **GDAS direct numeric C IIA** is within 5 percentage points
-of the best C for that T. This respects the conditional structure
-of GDAS. The saved `C_cal_score` (minimum of direct, mediator and
-readout validation scores) is a diagnostic, not the layer-selection
-metric. No test scores enter selection.
+By default, `addition_eval_selected.py --method gradual` evaluates
+the **same Standard CAL-selected (C,T) configurations** used to train GDAS,
+without requiring `selected_layers_gradual.json`. This makes the
+Standard-versus-GDAS comparison directly matched on all 20 SDAS-selected
+pairs (or however many CAL selection produced). To avoid selecting GDAS
+again, run:
+
+```bash
+python3 addition_eval_selected.py \
+  --method gradual \
+  --standard-root results_addition_standard_all_layers_seed0 \
+  --result-dir results_addition_gradual_selected_seed0 \
+  --seed 0
+```
+
+An **optional**, separate GDAS-specific candidate analysis is available
+via `addition_select_promising_layers.py --method gradual`, which first
+retains T based on the frozen Standard T CAL IIA and then retains C
+conditionally within each T layer based on GDAS direct numeric CAL IIA.
+To evaluate that *different subset*, explicitly pass
+`--selection results_addition_gradual_selected_seed0/selected_layers_gradual.json`.
+No TEST scores enter either layer selection.
 
 Results are under
 `evaluation_gradual/C_05_T_23/metrics.json` and
