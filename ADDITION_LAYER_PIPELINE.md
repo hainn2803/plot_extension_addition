@@ -44,7 +44,7 @@ python3 addition_eval_selected.py \
 ```
 
 The step-2 evaluation uses the **validation/CAL split only**; it does not
-touch test pairs. The final step-4 evaluations use held-out TEST.
+touch test pairs. Steps 3 and 5 evaluate the held-out TEST split.
 
 ## 0. Prepare data
 
@@ -72,11 +72,11 @@ using `C_only`, and trains their frozen linear readouts. It saves:
 results_addition_standard_all_layers_seed0/
   run_manifest.json
   summary.csv                  # variable,layer,cal_iia,readout_cal_acc,...
-  T_handles/T_layer_00/das_t.pt
-  T_handles/T_layer_00/t_readout_LogisticRegression.pt
+  trained_handles/T_L0/das_t.pt
+  trained_handles/T_L0/t_readout_LogisticRegression.pt
   ...
-  C_handles/C_layer_00/das_c.pt
-  C_handles/C_layer_00/c_readout_LogisticRegression.pt
+  trained_handles/C_L0/das_c.pt
+  trained_handles/C_L0/c_readout_LogisticRegression.pt
 ```
 
 `cal_iia` is the validation **free-autoregressive numeric output IIA**
@@ -123,11 +123,11 @@ Five percentage **points**, not 5% relative. Take the Cartesian
 product of the selected C/T layers, retaining only configurations
 where `C < T`. Both the layer lists and valid pairs are printed.
 
-**Step 3 GDAS reads this saved selection by default.** It validates
+**Step 4 GDAS reads this saved selection by default.** It validates
 that candidate checkpoints/readouts are still identical to those
 evaluated in step 2. If you change them, rerun the CAL eval first.
 
-## 3. Final Standard DAS configuration evaluation (optional, after GDAS training)
+## 3. Evaluate Standard DAS selected configurations before GDAS
 
 ```bash
 python3 addition_eval_selected.py \
@@ -178,13 +178,50 @@ to opt out of this extra evaluation.
 
 Recipient results are saved in `metrics.json["recipient"]` and as flat
 columns such as `C_only_Y_via_T_replay_recipient_different` in
-`evaluation_standard/summary.csv` or
-`evaluation_gradual/summary.csv`.
+`eval_configs_<hash>/config_summary.csv`, for **both** SDAS and GDAS.
 
-Each configuration goes to
-`evaluation_standard/C_00_T_23/metrics.json`; combined metrics go to
-`evaluation_standard/summary.csv`. Evaluations resume by checking
-exact artifact/data/generation signatures.
+### Evaluation profiles: multiple test datasets, same format as MCQA
+
+Both methods write an identical structure:
+```text
+results_addition_<standard_or_gradual>_.../
+  eval_configs_0123456789/           # example hash
+    eval_settings.json
+    config_summary.csv
+    all_config_metrics.csv
+    T_L18__C_L16/
+      metrics.json
+      eval_faithfulness.txt
+      eval_faithfulness.csv
+    T_L19__C_L16/
+      ...
+```
+
+The real 10-digit hash is computed from the **test dataset fingerprint**
+(raw and filtered files), seed, sampling/generation settings and metric
+version. The same dataset/settings produce the **same folder name in SDAS
+and GDAS**, but changing the dataset creates a new independent evaluation
+profile instead of overwriting previous results. Both readout and
+recipient-transfer metrics are included in the same per-configuration
+reports. `--data-dir` and `--cache-dir` can evaluate a different
+compatible Addition dataset without changing trained handles: each profile
+reads the `test` split of that dataset. The evaluator prints a warning
+when test data differs from training.
+
+For example, to use another held-out Addition dataset:
+
+```bash
+python3 addition_eval_selected.py \
+  --method standard \
+  --result-dir results_addition_standard_all_layers_seed0 \
+  --data-dir addition_another_dataset \
+  --cache-dir addition_another_filtered_cache \
+  --seed 0
+```
+
+The GDAS evaluator accepts the same `--data-dir` and `--cache-dir`
+options; only `--method` and `--result-dir` change. Evaluations resume
+using checkpoint/data/generation signatures within each hashed profile.
 
 ## 4. GDAS: train C conditioned on each candidate T
 
@@ -213,17 +250,18 @@ results_addition_gradual_selected_seed0/
   run_manifest.json
   training_pairs.json                # original CAL-selected (C,T) grid
   summary.csv
-  T_handles/T_layer_23/
-    das_t.pt                         # identical copy of SDAS frozen T
-    t_readout_LogisticRegression.pt
-  pairs/C_05_T_23/
-    train_signature.json
-    das_c.pt
-    c_readout_LogisticRegression.pt
-  pairs/C_05_T_24/
-    train_signature.json
-    das_c.pt
-    c_readout_LogisticRegression.pt
+  trained_handles/
+    T_L23/
+      das_t.pt                       # frozen identical SDAS T copy
+      t_readout_LogisticRegression.pt
+    T_L23__C_L5/
+      train_signature.json
+      das_c.pt
+      c_readout_LogisticRegression.pt
+    T_L24__C_L5/
+      train_signature.json
+      das_c.pt
+      c_readout_LogisticRegression.pt
 ```
 
 To **exhaustively sweep GDAS** (all valid pairs, `C<T`), first train
@@ -259,28 +297,29 @@ pairs (or however many were selected). The evaluator checks
 `train_signature.json` against each frozen T snapshot's SHA-256 hash
 to prevent evaluating C against the wrong T handle.
 
-### Backfill an existing GDAS run (no GPU training)
+### Migrate old SDAS/GDAS runs to MCQA layout (CPU only)
 
-Runs trained **before** the T snapshot change can be made self-contained
-without retraining or regenerating metrics:
+**Existing runs do not need retraining or GPU reevaluation.** After updating
+this branch, run the migration once **before resuming training/evaluation**:
 
 ```bash
-python3 addition_gradual_snapshot.py \
+python3 addition_migrate_mcqa_layout.py \
   --standard-root results_addition_standard_all_layers_seed0 \
-  --result-dir results_addition_gradual_selected_seed0
-
-python3 addition_eval_selected.py \
-  --method gradual \
-  --result-dir results_addition_gradual_selected_seed0 \
-  --seed 0
+  --gradual-root results_addition_gradual_selected_seed0 \
+  --method both
 ```
 
-The first command loads **no model**, copies only the small frozen T
-checkpoint/readout artifacts and writes `training_pairs.json`. It verifies
-that their hashes match the original T artifacts recorded when each GDAS C
-was trained; it rejects mismatches rather than silently replacing T.
-Existing cached results are reused by checkpoint **content hash**, even
-though the T file path has changed.
+This migrates old `C_handles/`, `T_handles/`, `pairs/`,
+`evaluation_standard/`, `evaluation_gradual/`, and the intermediate
+unhashed `eval_configs/` output into MCQA-style `trained_handles/`
+and `eval_configs_<hash>/` directories. All checkpoints are copied
+and SHA-256 verified before old files are removed; CAL checkpoint hashes
+in selections are rebased, and GDAS T snapshots are verified against
+each C training signature. Missing/new evaluations are not invented.
+
+If you only have SDAS, pass `--method standard`. If you only have GDAS
+and Standard has already been migrated, pass `--method gradual`.
+The migration is idempotent and does not load the model.
 
 An **optional**, separate GDAS-specific candidate analysis is available
 via `addition_select_promising_layers.py --method gradual`, which first
@@ -291,13 +330,14 @@ To evaluate that *different subset*, explicitly pass
 No TEST scores enter either layer selection.
 
 Results are under
-`evaluation_gradual/C_05_T_23/metrics.json` and
-`evaluation_gradual/summary.csv` with the **same held-out metrics**
-as the Standard evaluation.
+`eval_configs_<hash>/T_L23__C_L5/metrics.json` and
+`eval_configs_<hash>/config_summary.csv`, with the **same file names and
+metrics** as the Standard evaluation.
 
 ## Validation and caveats
 
-- Syntax and calibration-selection tests run in CI without a GPU.
+- Syntax, layer selection, same/different recipients, immutable T snapshots,
+  and directory/profile migrations are tested in CI without a GPU.
 - Full training/inference has not been GPU-run by this change; it
   needs the original repository's model, HF credential and data.
 - The new pipeline intentionally rejects legacy/incompatible
