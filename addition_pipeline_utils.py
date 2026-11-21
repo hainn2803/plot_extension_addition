@@ -111,13 +111,13 @@ def load_checkpoint(path, variable, layer, method=None, t_layer=None):
 
 
 def handle_paths(root, variable, layer):
-    p = Path(root) / f"{variable}_handles" / f"{variable}_layer_{layer:02d}"
+    p = Path(root) / "trained_handles" / f"{variable}_L{layer}"
     lower = variable.lower()
     return p / f"das_{lower}.pt", p / f"{lower}_readout_LogisticRegression.pt"
 
 
 def gradual_paths(root, c_layer, t_layer):
-    p = Path(root) / "pairs" / f"C_{c_layer:02d}_T_{t_layer:02d}"
+    p = Path(root) / "trained_handles" / f"T_L{t_layer}__C_L{c_layer}"
     return p / "das_c.pt", p / "c_readout_LogisticRegression.pt"
 
 
