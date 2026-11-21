@@ -36,9 +36,9 @@ from addition_pipeline_utils import (
 def rebuild_summary(root):
     rows = []
     for variable in ("T", "C"):
-        folder = root / f"{variable}_handles"
-        for directory in sorted(folder.glob(f"{variable}_layer_*")):
-            match = re.fullmatch(rf"{variable}_layer_(\d+)", directory.name)
+        folder = root / "trained_handles"
+        for directory in sorted(folder.glob(f"{variable}_L*")):
+            match = re.fullmatch(rf"{variable}_L(\d+)", directory.name)
             if not match:
                 continue
             layer = int(match.group(1))
