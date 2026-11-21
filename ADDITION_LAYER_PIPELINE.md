@@ -25,21 +25,22 @@ python3 addition_eval_all_layers_standard.py \
   --result-dir results_addition_standard_all_layers_seed0 \
   --threshold-pct 5
 
-# 3. GDAS trains ONLY the (C,T) candidate pairs from step 2
+# 3. Evaluate all 20 SDAS-selected configurations on held-out TEST
+python3 addition_eval_selected.py \
+  --method standard \
+  --result-dir results_addition_standard_all_layers_seed0
+
+# 4. Train GDAS ONLY on the same candidate configurations; freeze local T copies
 python3 addition_train_gradual_selected.py \
   --standard-root results_addition_standard_all_layers_seed0 \
   --result-dir results_addition_gradual_selected_seed0 \
   --lambda-med 2 --lambda-readout 2 --seed 0
 
-# 4. Optionally evaluate chain-level faithfulness for both methods afterward
-python3 addition_eval_selected.py \
-  --method standard \
-  --result-dir results_addition_standard_all_layers_seed0
-
+# 5. Evaluate GDAS from its own self-contained checkpoints (no Standard root)
 python3 addition_eval_selected.py \
   --method gradual \
-  --standard-root results_addition_standard_all_layers_seed0 \
-  --result-dir results_addition_gradual_selected_seed0
+  --result-dir results_addition_gradual_selected_seed0 \
+  --seed 0
 ```
 
 The step-2 evaluation uses the **validation/CAL split only**; it does not
@@ -197,7 +198,9 @@ python3 addition_train_gradual_selected.py \
 ```
 
 By default, train GDAS **only on (C,T) candidate pairs saved by the Step-2 CAL eval**.
-The exact frozen **T checkpoint and T readout are reused from Standard**
+The exact frozen **T checkpoint and T readout are copied byte-for-byte**
+from Standard into the GDAS output directory **before C training**.
+GDAS C training and evaluation then load these local immutable T snapshots
 (no independent/retrained T in GDAS). C uses direct Y sequence loss,
 a frozen-T mediator/replay loss, and a T readout loss.
 
@@ -208,7 +211,11 @@ T layer 24. Checkpoints are saved accordingly:
 ```text
 results_addition_gradual_selected_seed0/
   run_manifest.json
+  training_pairs.json                # original CAL-selected (C,T) grid
   summary.csv
+  T_handles/T_layer_23/
+    das_t.pt                         # identical copy of SDAS frozen T
+    t_readout_LogisticRegression.pt
   pairs/C_05_T_23/
     train_signature.json
     das_c.pt
@@ -234,34 +241,46 @@ This can be expensive: for an N-block model it trains
 independent handles. Run subsets with e.g. `--t-layers 23,24`
 and `--c-layers 0:16` to reduce compute.
 
-## 5. Choose promising GDAS pairs, then evaluate
-
-```bash
-python3 addition_select_promising_layers.py \
-  --method gradual \
-  --result-dir results_addition_gradual_selected_seed0 \
-  --threshold-pct 5
-
-python3 addition_eval_selected.py \
-  --method gradual \
-  --standard-root results_addition_standard_all_layers_seed0 \
-  --result-dir results_addition_gradual_selected_seed0
-```
-
-By default, `addition_eval_selected.py --method gradual` evaluates
-the **same Standard CAL-selected (C,T) configurations** used to train GDAS,
-without requiring `selected_layers_gradual.json`. This makes the
-Standard-versus-GDAS comparison directly matched on all 20 SDAS-selected
-pairs (or however many CAL selection produced). To avoid selecting GDAS
-again, run:
+## 5. Evaluate GDAS on the same selected configurations, independently
 
 ```bash
 python3 addition_eval_selected.py \
   --method gradual \
-  --standard-root results_addition_standard_all_layers_seed0 \
   --result-dir results_addition_gradual_selected_seed0 \
   --seed 0
 ```
+
+The GDAS evaluation reads **only** its own local C checkpoints, local
+byte-identical frozen T snapshots and `training_pairs.json`.
+It does **not** access `results_addition_standard_all_layers_seed0`.
+The `training_pairs.json` is sealed during GDAS training so that
+Standard and Gradual results are matched on all 20 Standard CAL-selected
+pairs (or however many were selected). The evaluator checks
+`train_signature.json` against each frozen T snapshot's SHA-256 hash
+to prevent evaluating C against the wrong T handle.
+
+### Backfill an existing GDAS run (no GPU training)
+
+Runs trained **before** the T snapshot change can be made self-contained
+without retraining or regenerating metrics:
+
+```bash
+python3 addition_gradual_snapshot.py \
+  --standard-root results_addition_standard_all_layers_seed0 \
+  --result-dir results_addition_gradual_selected_seed0
+
+python3 addition_eval_selected.py \
+  --method gradual \
+  --result-dir results_addition_gradual_selected_seed0 \
+  --seed 0
+```
+
+The first command loads **no model**, copies only the small frozen T
+checkpoint/readout artifacts and writes `training_pairs.json`. It verifies
+that their hashes match the original T artifacts recorded when each GDAS C
+was trained; it rejects mismatches rather than silently replacing T.
+Existing cached results are reused by checkpoint **content hash**, even
+though the T file path has changed.
 
 An **optional**, separate GDAS-specific candidate analysis is available
 via `addition_select_promising_layers.py --method gradual`, which first
