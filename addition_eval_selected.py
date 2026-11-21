@@ -1,8 +1,10 @@
 """Evaluate saved Addition Standard or Gradual DAS C -> T -> Y configurations.
 
 Uses held-out test pairs only AFTER calibration-based layer selection.
-Saves one metrics.json per configuration and a flattened summary.csv.
-Existing results are reused only when checkpoint/data/generation signatures match.
+Both SDAS and GDAS use MCQA-style eval_configs/T_L{t}__C_L{c}/
+with metrics.json, eval_faithfulness.txt, eval_faithfulness.csv;
+cumulative config_summary.csv and all_config_metrics.csv.
+Old evaluation_<method> results are imported without rerunning inference.
 """
 
 import argparse
@@ -20,6 +22,7 @@ from addition_gradual_snapshot import (
     artifact_hashes_by_name,
     validate_gradual_pair_snapshot,
 )
+from addition_eval_reports import config_dir, import_legacy, rebuild_summary
 from addition_train_standard_grid import (
     build_factual_c_bank,
     clean_readout,
@@ -34,7 +37,6 @@ from addition_pipeline_utils import (
     handle_paths,
     load_checkpoint,
     read_json,
-    write_csv,
     write_json,
 )
 
@@ -53,42 +55,6 @@ def compatible_signature(saved, current):
                 == artifact_hashes_by_name(current["artifacts"]))
     except (KeyError, TypeError, ValueError):
         return False
-
-
-def flatten(payload):
-    row = {
-        "method": payload["method"],
-        "C_layer": payload["C_layer"],
-        "T_layer": payload["T_layer"],
-        "C_cal_iia": payload["calibration"]["C_cal_iia"],
-        "T_cal_iia": payload["calibration"]["T_cal_iia"],
-    }
-    for name, value in payload["clean"].items():
-        row[f"clean_{name}"] = value
-    for family in ("T_only", "C_only", "C_T"):
-        for metric, value in payload["metrics"][family].items():
-            row[f"{family}_{metric}"] = value
-        for metric, value in payload.get("recipient", {}).get(family, {}).items():
-            row[f"{family}_{metric}"] = value
-    return row
-
-
-def rebuild_summary(directory, data_sig):
-    rows = []
-    for path in sorted(directory.glob("C_*_T_*/metrics.json")):
-        payload = read_json(path)
-        if payload.get("signature", {}).get("data") != data_sig:
-            continue
-        rows.append(flatten(payload))
-    rows.sort(key=lambda row: (row["T_layer"], row["C_layer"]))
-    if rows:
-        fields = list(rows[0])
-        for row in rows[1:]:
-            for field in row:
-                if field not in fields:
-                    fields.append(field)
-        write_csv(directory / "summary.csv", rows, fields)
-    return rows
 
 
 def get_paths(args, c_layer, t_layer):
@@ -212,6 +178,11 @@ def main():
     parser.add_argument("--skip-recipient", action="store_true",
                         help="Skip same/different recipient transfer experiments")
     parser.add_argument("--force", action="store_true")
+    parser.add_argument(
+        "--migrate-only", action="store_true",
+        help="Import old evaluation results to MCQA eval_configs and export reports "
+             "without model loading or GPU",
+    )
     parser.add_argument("--list-only", action="store_true")
     parser.add_argument("--force-rebuild-cache", action="store_true")
     args = parser.parse_args()
@@ -242,6 +213,17 @@ def main():
         print(f"{len(pairs)} configurations")
         return
 
+    # The same MCQA-style evaluation root is used for both methods.
+    manifest = read_json(root / "run_manifest.json")
+    if manifest["method"] != args.method:
+        raise RuntimeError(f"Wrong method for evaluation directory: {root}")
+    import_legacy(root, args.method, pairs, manifest["data"])
+    existing = rebuild_summary(root, manifest["data"])
+    if args.migrate_only:
+        print(f"[saved] {root / 'eval_configs' / 'config_summary.csv'} "
+              f"({len(existing)} cached configurations; no model loaded)")
+        return
+
     model, tokenizer = load_gemma_model(args.device)
     rows = load_addition_rows(model, tokenizer, args.data_dir, args.cache_dir,
                               args.eval_batch_size, args.max_new_tokens, args.force_rebuild_cache)
@@ -253,7 +235,7 @@ def main():
     if manifest["generation_cap"] != args.generation_cap:
         raise RuntimeError("CAL and TEST must use the same generation cap")
 
-    eval_dir = root / f"evaluation_{args.method}"
+    eval_dir = root / "eval_configs"
     recipient_schedules = None
     for index, (c, t) in enumerate(pairs, 1):
         (c_path, c_ro_path), (t_path, t_ro_path) = get_paths(args, c, t)
@@ -261,7 +243,7 @@ def main():
             args.method, c, t, [c_path, c_ro_path, t_path, t_ro_path],
             data_sig, args.generation_cap,
         )
-        output = eval_dir / f"C_{c:02d}_T_{t:02d}" / "metrics.json"
+        output = config_dir(root, c, t) / "metrics.json"
         saved = None
         if output.exists() and not args.force:
             previous = read_json(output)
@@ -310,14 +292,14 @@ def main():
 
         payload["signature"] = signature
         write_json(output, payload)
-        rebuild_summary(eval_dir, data_sig)
+        rebuild_summary(root, data_sig)
         print(f"  C_only: Y={payload['metrics']['C_only']['Y_after_C']:.4f} "
               f"T={payload['metrics']['C_only']['T_after_C']:.4f} "
               f"replay={payload['metrics']['C_only']['Y_via_T_replay']:.4f} "
               f"restore={payload['metrics']['C_only']['Y_restored_via_T']:.4f}")
 
-    summary = rebuild_summary(eval_dir, data_sig)
-    print(f"[saved] {eval_dir / 'summary.csv'} ({len(summary)} evaluations)")
+    summary = rebuild_summary(root, data_sig)
+    print(f"[saved] {eval_dir / 'config_summary.csv'} ({len(summary)} evaluations)")
 
 
 if __name__ == "__main__":
