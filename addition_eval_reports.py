@@ -1,6 +1,6 @@
 """Common MCQA-style evaluation layout for both Addition SDAS and GDAS.
 
-Both methods use <result-dir>/eval_configs/C_L{c}__T_L{t}/ with
+Both methods use <result-dir>/eval_configs/T_L{t}__C_L{c}/ with
 metrics.json, eval_faithfulness.txt and eval_faithfulness.csv.
 The shared evaluation root also holds config_summary.csv and
 all_config_metrics.csv. Old evaluation_<method>/ results are imported
@@ -17,7 +17,7 @@ FAMILIES = ("T_only", "C_only", "C_T")
 
 
 def config_dir(root, c_layer, t_layer):
-    return Path(root) / "eval_configs" / f"C_L{int(c_layer)}__T_L{int(t_layer)}"
+    return Path(root) / "eval_configs" / f"T_L{int(t_layer)}__C_L{int(c_layer)}"
 
 
 def legacy_dir(root, method, c_layer, t_layer):
@@ -165,7 +165,7 @@ def rebuild_summary(root, data_sig):
     evaluation_root = root / "eval_configs"
     summary_rows = []
     details = []
-    for path in sorted(evaluation_root.glob("C_L*__T_L*/metrics.json")):
+    for path in sorted(evaluation_root.glob("T_L*__C_L*/metrics.json")):
         payload = read_json(path)
         if payload.get("signature", {}).get("data") != data_sig:
             continue
