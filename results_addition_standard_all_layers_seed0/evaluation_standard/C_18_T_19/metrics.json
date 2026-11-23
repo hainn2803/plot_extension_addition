@@ -1,0 +1,102 @@
+{
+  "C_layer": 18,
+  "T_layer": 19,
+  "calibration": {
+    "C_cal_iia": 0.9932659864425659,
+    "T_cal_iia": 0.9663299918174744
+  },
+  "clean": {
+    "C_base": 0.9800000190734863,
+    "C_source": 0.9933333396911621,
+    "T_base": 0.9831649661064148,
+    "T_source": 0.9663299918174744
+  },
+  "method": "standard",
+  "metrics": {
+    "C_T": {
+      "C_after_C": 0.9900000095367432,
+      "Joint_C_T_Y_after_C": 0.653333306312561,
+      "T_after_C": 0.653333306312561,
+      "Y_after_C": 0.9766666889190674,
+      "Y_restored_via_T": 0.8999999761581421,
+      "Y_via_T_replay": 0.6733333468437195
+    },
+    "C_only": {
+      "C_after_C": 0.9933333396911621,
+      "Joint_C_T_Y_after_C": 0.5199999809265137,
+      "T_after_C": 0.5299999713897705,
+      "Y_after_C": 0.9900000095367432,
+      "Y_restored_via_T": 0.8366666436195374,
+      "Y_via_T_replay": 0.5733333230018616
+    },
+    "T_only": {
+      "Joint_T_Y_after_T": 0.9259259104728699,
+      "T_after_T": 0.9663299918174744,
+      "Y_after_T": 0.9595959782600403
+    }
+  },
+  "recipient": {
+    "C_T": {
+      "Joint_T_Y_after_C_recipient_different": 0.3633333444595337,
+      "Joint_T_Y_after_C_recipient_same": 0.5799999833106995,
+      "T_after_C_recipient_different": 0.3766666650772095,
+      "T_after_C_recipient_same": 0.6033333539962769,
+      "Y_after_C_recipient_different": 0.8833333253860474,
+      "Y_after_C_recipient_same": 0.949999988079071,
+      "Y_via_T_replay_recipient_different": 0.79666668176651,
+      "Y_via_T_replay_recipient_same": 0.9433333277702332
+    },
+    "C_only": {
+      "Joint_T_Y_after_C_recipient_different": 0.43666666746139526,
+      "Joint_T_Y_after_C_recipient_same": 0.54666668176651,
+      "T_after_C_recipient_different": 0.44999998807907104,
+      "T_after_C_recipient_same": 0.5699999928474426,
+      "Y_after_C_recipient_different": 0.9066666960716248,
+      "Y_after_C_recipient_same": 0.9399999976158142,
+      "Y_via_T_replay_recipient_different": 0.6800000071525574,
+      "Y_via_T_replay_recipient_same": 0.846666693687439
+    },
+    "T_only": {
+      "Y_via_T_replay_recipient_different": 0.8148148059844971,
+      "Y_via_T_replay_recipient_same": 0.932659924030304
+    }
+  },
+  "recipient_seed": 0,
+  "recipient_version": 1,
+  "signature": {
+    "C_layer": 18,
+    "T_layer": 19,
+    "artifacts": {
+      "results_addition_standard_all_layers_seed0/C_handles/C_layer_18/c_readout_LogisticRegression.pt": "e7883a18f12cef1b0c9ec114f0b6d889ffc7f63892a4df214e09c8674e8c4914",
+      "results_addition_standard_all_layers_seed0/C_handles/C_layer_18/das_c.pt": "463c921b3b9ad07291fd3cb4046706a7d8f22c1d9ed0d4dd00e8ff80af191f26",
+      "results_addition_standard_all_layers_seed0/T_handles/T_layer_19/das_t.pt": "a3bfbca9764b09df88fcde06ad1d216b9aedf79aeb29beedd7d4d67a6730c64a",
+      "results_addition_standard_all_layers_seed0/T_handles/T_layer_19/t_readout_LogisticRegression.pt": "93220677feb39b28cfca70d702fcb2d827de0b1936930593b1826e4af7bd4872"
+    },
+    "data": {
+      "filtered": {
+        "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+        "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+        "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+        "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+        "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+        "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+        "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+        "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+        "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+      },
+      "raw": {
+        "cache_version": 2,
+        "max_new_tokens": 4,
+        "model": "google/gemma-2-2b",
+        "raw_files": {
+          "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+          "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+          "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+        }
+      }
+    },
+    "generation_cap": 8,
+    "method": "standard",
+    "metric_version": "free_autoregressive_numeric_v2"
+  }
+}

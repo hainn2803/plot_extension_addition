@@ -1,0 +1,1905 @@
+{
+  "calibration_signatures": {
+    "C_L0": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_00/c_readout_LogisticRegression.pt": "cebb7303985ff30b0e2f32c9104835fc8ae716a8a49f9dcda433a2bf80ae1c4c",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_00/das_c.pt": "e717cd27244bff80b4d16f03b25cf4bbb3eeb79600f5421f952c0061dd51ed7b"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 0,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L1": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_01/c_readout_LogisticRegression.pt": "efbb496c17dc38c17ee983019f557af26a9006bbea41e7f2f07c315a7d9cf1f4",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_01/das_c.pt": "1ccc11ce561890432c3aa3dd1d61cf7ce59f64a880d0b5b4a0156558e74729b5"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 1,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L10": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_10/c_readout_LogisticRegression.pt": "6827049b02747289454c73ac4db293258af2078321c807f629ff96cbb6f24612",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_10/das_c.pt": "1897767956207bc2df5c533c4f02751a8d56e22f386767433bb054c5ab628fca"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 10,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L11": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_11/c_readout_LogisticRegression.pt": "8b9b5488c40eeffa54b30406c1fd025a30a08ab29cbd95fc3e5289ea4c6fac47",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_11/das_c.pt": "4db0cdf4592b6a2a2ef8b8e64729818db687b20c098f95c50b1a16de1b9db789"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 11,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L12": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_12/c_readout_LogisticRegression.pt": "d5b8b26c07837e5e6850b79f1c2a9a5b4f6743b8447c1883e23b43e0f7761728",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_12/das_c.pt": "7023019e6c771266799c793cd5e66b4bfd1e50fac84cb4fe38470fb5843b29a4"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 12,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L13": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_13/c_readout_LogisticRegression.pt": "4e48efce64adac46f4b0d175730f6d78afc225a505e77b553ee39078b3b3dc2e",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_13/das_c.pt": "1a65d414e7ace3aa103cfb7a7e8c364330e2c3f0acd0d5a55a085630cb2bf44f"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 13,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L14": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_14/c_readout_LogisticRegression.pt": "afb994ee2dff5ed59fcf3212229b9a0f9df17a337e41e1117dec86f6671e0f67",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_14/das_c.pt": "b9123c3b441c4200c64b124da6b9c940c19a480f4c9b887f0ed1130ebaaceae0"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 14,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L15": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_15/c_readout_LogisticRegression.pt": "298e7fac60a483d77398862eed987c7bbfa3a1036fe346acd71335d21e9c2f58",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_15/das_c.pt": "68bc2e2329df3ce748f8e2456c9122de88c1651efdaf23eb876bd70e1f3b4889"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 15,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L16": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_16/c_readout_LogisticRegression.pt": "0a2a8d3e8afa67ce451816b8166650b4ca683cc9c458c893752c5c42fa892533",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_16/das_c.pt": "91167c430f577ab199923e8a462392db6e2aa684d5df91dbe584a976ee3a055a"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 16,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L17": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_17/c_readout_LogisticRegression.pt": "67d4f3bb346c35698bb1a3f24b61928a4afe011f892c431aea9714be9036ad12",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_17/das_c.pt": "14be3261ba857ce668bb7ed4921c6989fcb24dd5428a1cb724e6c038d852c855"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 17,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L18": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_18/c_readout_LogisticRegression.pt": "e7883a18f12cef1b0c9ec114f0b6d889ffc7f63892a4df214e09c8674e8c4914",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_18/das_c.pt": "463c921b3b9ad07291fd3cb4046706a7d8f22c1d9ed0d4dd00e8ff80af191f26"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 18,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L19": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_19/c_readout_LogisticRegression.pt": "8361b32c1899759eccbadb2863faf161f76e9318b9a62021ea8d340f759fa08a",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_19/das_c.pt": "8934e3bfcaa7cb36594e2761b119049ac6d061ff80b666b26d5ad17b7e1127fa"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 19,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L2": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_02/c_readout_LogisticRegression.pt": "753078d1a65c42ced63707cba30dfc7b2361a4a518445b66240f85a194b99a52",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_02/das_c.pt": "2d4ec28ab649e095477e1bf256f10aa888cd3c2c34cfa14bb0ff210f47263143"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 2,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L20": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_20/c_readout_LogisticRegression.pt": "7214347509b455b033bf6d3c4779f29da191addada296a9db536ab1e0cbcf12e",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_20/das_c.pt": "402b2502aa10a1904b93ed253e672f193eb1041df80e07aa0fbf0e521092f25f"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 20,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L21": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_21/c_readout_LogisticRegression.pt": "e965c346881c896f11e89e8892673fdf79c2abfe666e4767e20d74a9f3ca2c14",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_21/das_c.pt": "40eaf8248c6950ced5894c458016acb4a76a5f63b78c1470f42b69df0168e45e"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 21,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L22": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_22/c_readout_LogisticRegression.pt": "cf78e61d771238c8c129bd68c8cb900d9f851b28970a6dbc13c4c187e7b924d8",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_22/das_c.pt": "31c320da8371a3f708801e84d2cb0da637b9827f2d1349034e164edf193a8bd5"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 22,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L23": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_23/c_readout_LogisticRegression.pt": "9857080d325ca6783b88ab8c44985f50866cc7d339089a77c9bc1627a0661e8d",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_23/das_c.pt": "100aee1409d08d01a8be55826f66194146c43a3a0a44c0df0bf29587a2b6bc6c"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 23,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L24": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_24/c_readout_LogisticRegression.pt": "b5df13786e94dd8c0d77eb0a1756374cc548d335615d56419495d6a93870b988",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_24/das_c.pt": "7e36d9de744d55a5e11bc1d42e1a3f8bd37562c64338f2614f3996da6df800ed"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 24,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L25": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_25/c_readout_LogisticRegression.pt": "ab1adafa19967856a90087ab70555aaa6a3a692ca6b4a011267e4186fb887442",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_25/das_c.pt": "6388c4a8c3c8762a12f274b11a94307c2ef9d0a78d0388cdf1900b973e111db4"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 25,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L3": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_03/c_readout_LogisticRegression.pt": "6b316321786fff5501f383efeaa917e29a12f8b8fe3a29706047bc0fd13e566b",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_03/das_c.pt": "628dcd5b4b72e4863e53a5922fe27e7ebb38c3b311ad94cbaae3f6e66f775f33"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 3,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L4": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_04/c_readout_LogisticRegression.pt": "3a3018938bb82455511b62c020f4b936544e1844d251fdb68554fcb61897ab3e",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_04/das_c.pt": "574a52448c0bd7871c4a51bf74f3ae28d21df6caa194273a935d218cb6e18f9a"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 4,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L5": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_05/c_readout_LogisticRegression.pt": "48465c8e766a2e2ba8e03761715005ddcf140488d4421884f7b9a89505b749b3",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_05/das_c.pt": "c43ef72ec006026d17b3adfa94c7ce94703c6fd94d3226306b2ff9941b3306e7"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 5,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L6": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_06/c_readout_LogisticRegression.pt": "130abd1796aa747594c32dea44120fc244e71cd72398918499c3132006edc32b",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_06/das_c.pt": "8cb6e879cedb5ee29de7960247677405030b6f36363a8ceca0a5a710b0cf4be1"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 6,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L7": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_07/c_readout_LogisticRegression.pt": "705a2ccd96f9a2189714d1c33a1346c9cd504a408159b1a488f0aba304ea6cd9",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_07/das_c.pt": "ba9492c19737f8e35cb47d80925237d5267f96d53dead3f80afe11bbe5edb540"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 7,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L8": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_08/c_readout_LogisticRegression.pt": "17733fc444e64e248aa175a559175ea328021e6c24824445004b4f2f4d10846e",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_08/das_c.pt": "e6114f16228f14f96f891c640e6c876e812d1427efeb739f1673a07e3ff8ae92"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 8,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "C_L9": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_09/c_readout_LogisticRegression.pt": "4bd67ce82fbb21674578f5a95ee8dfbcd51acbab9a5b51ffe3d1aac1983e67e5",
+        "results_addition_standard_all_layers_seed0/C_handles/C_layer_09/das_c.pt": "e3d6c0ea7ed7f7f387ec871d6548de964b66cb08dd73174e827057eef4539000"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 9,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "C"
+    },
+    "T_L0": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_00/das_t.pt": "aed13520a7b118772e9f4cd370e79e70955da455ac1528ab295ee2e6adf499df",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_00/t_readout_LogisticRegression.pt": "0586d09db430c8daec471fe7fa17790ebf2dacaa3dc1dbd9fb202f88ce4eaf8d"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 0,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L1": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_01/das_t.pt": "924d3d05b350d4645827d1907c9ec057d16c5e0308a98dbe6aa0b92bfd6abe17",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_01/t_readout_LogisticRegression.pt": "b94a79b8b0cb5ac91ec36d52a0d26f883040e2addf64ed7c923ea63f7c2ebc9b"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 1,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L10": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_10/das_t.pt": "eb00a87380b4095a516b929b2a693048ee2b2ce81d8507b3e46c38dfb9fec178",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_10/t_readout_LogisticRegression.pt": "3037a0a319554c367d606870a37b1e852e5568f95e0c69fd3b8611fe2c84fe91"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 10,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L11": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_11/das_t.pt": "6c56eceb88c63973135a5984ace4160667a578766992361f23e86cedadc7dfb7",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_11/t_readout_LogisticRegression.pt": "ab6d349313462e47389ac35a42f73808b5a12f66f74d17daf3f497c9a2e8e4fc"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 11,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L12": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_12/das_t.pt": "6e6367870bad6c80db4350188f17e9f62017fdb4f6681bc890c16bef4172e8c3",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_12/t_readout_LogisticRegression.pt": "160d3ce493f328dfca8dc1711c9f671160a56c00f0f39d10820a48ad7cd097df"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 12,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L13": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_13/das_t.pt": "a448bde9b1861b6ecdb121a0a7763231ab3f7bb48f6ef60cee5cf2e4b955af25",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_13/t_readout_LogisticRegression.pt": "fa031af933497b15bbf551370e408ca250535dd9bf056004125b73f371bafa86"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 13,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L14": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_14/das_t.pt": "a444d87ace62c942db86e58286f1df51fbd97d0349929ff58faf55132dbde708",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_14/t_readout_LogisticRegression.pt": "4524862e1057a2a8a616499ff35928d4341626602779e400e111e1737eaa4b25"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 14,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L15": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_15/das_t.pt": "4df409cb48708f371c16b5695560fbc42ea47e3a935942df0e57f213e2e35e3a",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_15/t_readout_LogisticRegression.pt": "4491a575658b0a148c8b2dd763ae22ccfa25114a271b60f54835890ea79b1363"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 15,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L16": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_16/das_t.pt": "4df1f86d3535b6696b2d72c8e8ae11716642d4631f112f90d3062b641a7c3bb7",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_16/t_readout_LogisticRegression.pt": "acadf16e9496a69e32add79797e7a3ef01d0ad50cffec9dad6b767567b1f4b64"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 16,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L17": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_17/das_t.pt": "562b65120bbbf53cd5bba86caa7414f54c314abe2649d8c817e951767b940235",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_17/t_readout_LogisticRegression.pt": "5dfef9bc534f3505cc14a19a4aaf9744eaccc97ad6d578b3023fa3092c96b073"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 17,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L18": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_18/das_t.pt": "a748bdbe835f9f3251592d7f69c2f62f6014b272d0ecf117917827a17a18d0ff",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_18/t_readout_LogisticRegression.pt": "94ba8687f1d2d526b04f03605a9b66376b2b0e1693016cbe6f4d1f18ae664705"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 18,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L19": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_19/das_t.pt": "a3bfbca9764b09df88fcde06ad1d216b9aedf79aeb29beedd7d4d67a6730c64a",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_19/t_readout_LogisticRegression.pt": "93220677feb39b28cfca70d702fcb2d827de0b1936930593b1826e4af7bd4872"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 19,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L2": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_02/das_t.pt": "cbf8693173d9e099095f978f8b8aa9ae0061ba7aac4122e11e0c49538da536e3",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_02/t_readout_LogisticRegression.pt": "90e5acb9c26f8c10361918ccee80b049428a4141e33875e9b2fa4342067050da"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 2,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L20": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_20/das_t.pt": "338935e802c1a928d37685a821667f09e148a06a2db172f85630f739cbcdd232",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_20/t_readout_LogisticRegression.pt": "2b6a44681250aa77eb532b804c6767a0f9f0a9b393b1d40071b69ed8947aabf5"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 20,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L21": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_21/das_t.pt": "4579c117011106c0920b8783b4f8cab7071fd671fbf5335cf59d5efad9228e9c",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_21/t_readout_LogisticRegression.pt": "4dd2a4d7723c8ffd9d03e4839a7def9983320e128edabef7a44afe93fd000a1f"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 21,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L22": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_22/das_t.pt": "dfb07f005271c2c47960a89c8a9396fe68c261de4a7c9ea187ca3d8d400a7d3f",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_22/t_readout_LogisticRegression.pt": "d9d9aa5fea59c7872b5d17c8ae2f25c584052c8ad4c05d56052bbcde5551c8a1"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 22,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L23": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_23/das_t.pt": "48218e697c2f16631e876d7a8faaa6cc03cc390a280a106475f2b4b53d63efba",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_23/t_readout_LogisticRegression.pt": "36b1fe75da065a21cfea29fc23eb2f8cc3be83009f0c3c84d46bbcc79c72e009"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 23,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L24": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_24/das_t.pt": "80b5fe28778afae96d0f53147c8ea46c12dca07bc20beb17977a825bd23a1403",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_24/t_readout_LogisticRegression.pt": "3f07ec58392a188f697e804e6d5ec644d1bd85fa3f09901b5db5be54de4390a0"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 24,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L25": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_25/das_t.pt": "21568f36782345602e807fb3597b102ed34f15d073dd14423ffd7ca49f40b179",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_25/t_readout_LogisticRegression.pt": "15a9a0b25fa54d7e9800d220a69b76c35e7ff768454139b50baab358a8608d70"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 25,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L3": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_03/das_t.pt": "1d87899c3296945119a1e6a34a9ba3d6f3ab461b7a8540402b63514b6b683f39",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_03/t_readout_LogisticRegression.pt": "6801b787ed13266c34e3c7b9f7bacefe34ef8588e0af7e2c1fb9bdf134a2407b"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 3,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L4": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_04/das_t.pt": "3b5e3c5b268975e050dd6211535524c49a122b526e3371f23a2f3a37e0a136f7",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_04/t_readout_LogisticRegression.pt": "352e67055b39e44fc21be3033ce3a9193bf6a8ac4a039f1dd83ed9469d6e15ad"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 4,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L5": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_05/das_t.pt": "d35ab561b8b1178a6b17d83616674d9981aaeaac9104e362f4285665c7941184",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_05/t_readout_LogisticRegression.pt": "1176001d2af37a576b7e7fa8e971aaa648d886d6b52db1f4c3894fc222408266"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 5,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L6": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_06/das_t.pt": "d4e93781d6de0ff6674409e96452851b27845fd09aba2840c496de0eac4dda0f",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_06/t_readout_LogisticRegression.pt": "90b17e4fe79bb92edcbd171e2d5ec55106904f093bbbb997b9697a99ff20ae8e"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 6,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L7": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_07/das_t.pt": "4b06ec5b32dd81dbd88a378f8aaf1c0c58aed36d04d92b11a5335d03c83b6c01",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_07/t_readout_LogisticRegression.pt": "58f4a83bdc5925a8d18e896a7f08234536dc5a3cd3d1fa926952338f999e595b"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 7,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L8": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_08/das_t.pt": "669aaadb0a159b4a8c6256179308baf97e8f6b191a43b3b33f2e7aae5c8a32be",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_08/t_readout_LogisticRegression.pt": "51b033835e0f29ec78dfca73b2c2296453dfc1696846e7cdfd46b02c9818b1cc"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 8,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    },
+    "T_L9": {
+      "artifacts": {
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_09/das_t.pt": "0be35d1b124a129b720c549255630b530b58acc4b68318056995404ef1b4d739",
+        "results_addition_standard_all_layers_seed0/T_handles/T_layer_09/t_readout_LogisticRegression.pt": "800a3e6c51168a6e1e4164a8bf35e02603163118a8d6157c0f4557ef7e43d964"
+      },
+      "data": {
+        "filtered": {
+          "test_C_T.jsonl": "a0755842dfc4952c33b0e3aaa887703ae2e6c7f88a2bdcc141110267754eb1d9",
+          "test_C_only.jsonl": "2041e3ba23507b3d10e8a1fabef6f9d2775ef8902041f17e7fc043341cedd308",
+          "test_T_only.jsonl": "4708551c9457cdccd490efd240c986096d6fddd9276f09465d10549d8c3a0fe4",
+          "train_C_T.jsonl": "ef90fbb51cfdf19e817d8585342852aff85ef07ce0fae6af551a73a7b89e94ef",
+          "train_C_only.jsonl": "3b48c2bf287cfa545afd971903f800c6ccb3b2ca8fe164bdc1d3d1cd8bb4ec91",
+          "train_T_only.jsonl": "71719c5a6f9321318284260f28876b49d97dc495f6282c9e5cd61be6a86c0a62",
+          "validation_C_T.jsonl": "2f9c741a3519d6f3fca5dc38043d403f8c5ae48ddee6c7780d00a5ba72e63204",
+          "validation_C_only.jsonl": "f8b1c390fb0003919fbb1e65f48a9bc4f05f85f6ba5447929ef17a6c6120639e",
+          "validation_T_only.jsonl": "33148362e8cf2fa12245f0096d39616dd32333f887948a310152728e31f04706"
+        },
+        "raw": {
+          "cache_version": 2,
+          "max_new_tokens": 4,
+          "model": "google/gemma-2-2b",
+          "raw_files": {
+            "test": "49ac806c151f479e927d6fea6137a53c644b71c15069800c14a7620e008f12c8",
+            "train": "afa7844edaa5b56f5df94c42290526dee866eb2c003513f2290089ded2a709de",
+            "validation": "b6985a5ac8232550888e61d8fcbd2e966823c9cbe7dcb7bba169428aaaea2486"
+          }
+        }
+      },
+      "generation_cap": 8,
+      "layer": 9,
+      "metric": "free_autoregressive_numeric_v2",
+      "split": "validation",
+      "variable": "T"
+    }
+  },
+  "calibration_split": "validation",
+  "calibration_summary": "results_addition_standard_all_layers_seed0/calibration_standard/summary.csv",
+  "evaluated_layers": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25
+  ],
+  "layers": {
+    "C": [
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "T": [
+      18,
+      19,
+      20,
+      21,
+      22
+    ]
+  },
+  "method": "standard",
+  "pairs": [
+    {
+      "C_layer": 16,
+      "T_layer": 18
+    },
+    {
+      "C_layer": 17,
+      "T_layer": 18
+    },
+    {
+      "C_layer": 16,
+      "T_layer": 19
+    },
+    {
+      "C_layer": 17,
+      "T_layer": 19
+    },
+    {
+      "C_layer": 18,
+      "T_layer": 19
+    },
+    {
+      "C_layer": 16,
+      "T_layer": 20
+    },
+    {
+      "C_layer": 17,
+      "T_layer": 20
+    },
+    {
+      "C_layer": 18,
+      "T_layer": 20
+    },
+    {
+      "C_layer": 19,
+      "T_layer": 20
+    },
+    {
+      "C_layer": 16,
+      "T_layer": 21
+    },
+    {
+      "C_layer": 17,
+      "T_layer": 21
+    },
+    {
+      "C_layer": 18,
+      "T_layer": 21
+    },
+    {
+      "C_layer": 19,
+      "T_layer": 21
+    },
+    {
+      "C_layer": 20,
+      "T_layer": 21
+    },
+    {
+      "C_layer": 16,
+      "T_layer": 22
+    },
+    {
+      "C_layer": 17,
+      "T_layer": 22
+    },
+    {
+      "C_layer": 18,
+      "T_layer": 22
+    },
+    {
+      "C_layer": 19,
+      "T_layer": 22
+    },
+    {
+      "C_layer": 20,
+      "T_layer": 22
+    },
+    {
+      "C_layer": 21,
+      "T_layer": 22
+    }
+  ],
+  "selection_source": "addition_eval_all_layers_standard.py",
+  "threshold_pct": 5.0
+}
