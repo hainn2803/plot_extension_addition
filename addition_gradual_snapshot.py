@@ -111,13 +111,39 @@ def freeze_t_snapshots(gradual_root, standard_root, pairs):
         )
 
     pair_file = gradual_root / TRAINING_SELECTION_NAME
+
+    # Preserve the entire prior selection when extending an existing run.
+    # Running only a subset of layers must never drop recorded pairs.
+    recorded = set()
+    if pair_file.exists():
+        previous = read_json(pair_file)
+        if (previous.get("method") != "gradual" or
+                previous.get("selection_source") != "training_pairs_snapshot"):
+            raise RuntimeError(f"Unexpected GDAS selection format: {pair_file}")
+        recorded = set(normalize_pairs(previous["pairs"]))
+
+    # Also preserve any already-created checkpoint directories, including a
+    # pair whose training began before its selection was fully recorded.
+    on_disk = set()
+    handles = gradual_root / "trained_handles"
+    for folder in handles.glob("T_L*__C_L*"):
+        match = re.fullmatch(r"T_L(\d+)__C_L(\d+)", folder.name)
+        if not match or not folder.is_dir():
+            continue
+        if any((folder / name).exists() for name in (
+                "train_signature.json", "das_c.pt",
+                "c_readout_LogisticRegression.pt")):
+            t, c = map(int, match.groups())
+            on_disk.add(verified_pair(c, t))
+
+    requested = set(pairs)
+    preserved = recorded | on_disk
+    pairs = sorted(preserved | requested, key=lambda pair: (pair[1], pair[0]))
     payload = {
         "method": "gradual",
         "selection_source": "training_pairs_snapshot",
         "pairs": [{"C_layer": c, "T_layer": t} for c, t in pairs],
     }
-    if pair_file.exists() and read_json(pair_file) != payload:
-        raise RuntimeError(f"GDAS training pair selection changed: {pair_file}")
 
     # Check first; do not snapshot a source T handle that differs from the
     # dependency recorded by an already-trained conditional GDAS C handle.
@@ -137,9 +163,15 @@ def freeze_t_snapshots(gradual_root, standard_root, pairs):
             copy_immutable(src, dest)
         print(f"[frozen T snapshot] L{t}: {dest_paths[0].parent}", flush=True)
 
-    if not pair_file.exists():
+    # Write only after every old/new pair and frozen T artifact is verified.
+    if not pair_file.exists() or read_json(pair_file) != payload:
         write_json(pair_file, payload)
-    print(f"[GDAS self-contained] {pair_file} ({len(pairs)} pairs)", flush=True)
+    print(
+        f"[GDAS self-contained] {pair_file}: "
+        f"{len(preserved)} preserved, {len(requested - preserved)} new, "
+        f"{len(pairs)} total pairs",
+        flush=True,
+    )
 
 
 def validate_gradual_pair_snapshot(root, c, t):
@@ -178,16 +210,8 @@ def main():
     if selection.get("method") not in ("standard", "gradual"):
         raise ValueError(f"Invalid selection at {source_selection}")
     pairs = normalize_pairs(selection["pairs"])
-    # If GDAS checkpoints already exist, do not allow an unrelated selection
-    # to mask pairs trained in the current run.
-    actual = set()
-    for folder in (gradual_root / "trained_handles").glob("T_L*__C_L*"):
-        match = re.fullmatch(r"T_L(\d+)__C_L(\d+)", folder.name)
-        if match:
-            actual.add((int(match.group(2)), int(match.group(1))))
-    if not actual.issubset(set(pairs)):
-        missing = sorted(actual.difference(set(pairs)))
-        raise RuntimeError(f"Existing GDAS pairs absent from selection: {missing}")
+    # freeze_t_snapshots safely merges the requested selection with existing
+    # recorded/on-disk pairs, verifying every frozen T dependency.
     freeze_t_snapshots(gradual_root, standard_root, pairs)
 
 
